@@ -1,0 +1,130 @@
+.store-locator-heading {
+  position: relative;
+  width: 100%;
+  height: 153px;
+  margin-top: 25px; /* khoảng cách thật với section trước (ảnh tem), đo theo y trong Figma: 2587-2562=25px */
+  background: #f8f7f2;
+}
+
+.store-locator-heading h2 {
+  position: absolute;
+  left: 50%;
+  top: 35px;
+  transform: translateX(-50%);
+  margin: 0;
+  font-family: var(--font-heading);
+  font-weight: 500;
+  font-size: 70px;
+  line-height: 82.78px;
+  color: var(--color-text);
+  text-align: center;
+  white-space: nowrap;
+}
+
+/* Carousel 3 slide (6 chi nhánh), tự chuyển mỗi 3s — xem public/js/components/store-carousel.js */
+.store-carousel {
+  width: 1440px;
+  max-width: 100%;
+  margin: 0 auto;
+  overflow: hidden;
+}
+
+.store-carousel__track {
+  display: flex;
+  width: max-content;
+  transition: transform 0.8s ease;
+}
+
+.store-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 720px);
+  grid-template-rows: repeat(2, 588px);
+  width: 1440px;
+  flex: none;
+}
+
+.store-photo {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.store-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.4s ease;
+}
+
+.store-photo:hover img {
+  transform: scale(1.05);
+}
+
+.store-card {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.store-card--cream {
+  background: #fff9e8;
+}
+
+.store-card--blue {
+  background: #d5f2ff;
+}
+
+.store-card--green {
+  background: #f2ffe3;
+}
+
+.store-card__name {
+  position: absolute;
+  left: 69px;
+  top: 57px;
+  margin: 0;
+  font-family: var(--font-heading);
+  font-weight: 500;
+  font-size: 60px;
+  line-height: 75px;
+  color: var(--color-text);
+  white-space: nowrap;
+}
+
+.store-card__label {
+  position: absolute;
+  left: 105.49px;
+  top: 445px;
+  margin: 0;
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-size: 25px;
+  line-height: 40px;
+  color: var(--color-text);
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.store-card__pin {
+  position: absolute;
+  left: 69px;
+  top: 449px;
+  width: 26.49px;
+  height: 31px;
+  display: block;
+}
+
+.store-card__address {
+  position: absolute;
+  left: 69px;
+  top: 490px;
+  width: 522px;
+  margin: 0;
+  font-family: var(--font-body);
+  font-weight: 500;
+  font-size: 25px;
+  line-height: 40px;
+  color: var(--color-text);
+  text-transform: uppercase;
+}

@@ -57,13 +57,21 @@ Bảng map file → `font-weight`/`font-style` chi tiết sẽ bổ sung khi cod
 - CSS: `.hero-stamp-photo` (section cao 1038px) + ảnh căn giữa 1180.581×856.084px trong `hero.css`.
 - **Phát hiện + sửa khi review**: trong Figma, section này bắt đầu ở page y=1524, tức **chồng lên 94px cuối** của `.hero-content` (kết thúc ở y=1618=799+819) thay vì xếp nối tiếp — nếu xếp tuần tự như 2 khối riêng sẽ dư ~94px khoảng trắng. Đã sửa bằng `margin-top: -94px` trên `.hero-stamp-photo`. **Bài học chung cho các session sau**: luôn đối chiếu y-start/y-end giữa 2 section liền kề trong Figma trước khi giả định chúng xếp nối tiếp nhau.
 
-### Session 5 — "Tìm Cửa Hàng Gần Bạn"
-- Heading (`1:15`): TT Norms Pro Serif Medium 70px, `#2e2926`, căn giữa.
-- Lưới 2×2, mỗi ô 720×588px:
-  - Trên-trái (`1:16`): ảnh nội thất (không chữ).
-  - Trên-phải (`1:31`): "Faro Cafe Kỳ Đồng Gallery" + "địa chỉ" + "hẻm 5/20 kỳ Đồng, p. nhiêu lộc, tp. hCM".
-  - Dưới-trái (`1:18`): "Faro Cafe Quang Trung Station" + "địa chỉ" + "1014 Quang Trung, Thông Tây Hội, tp. hCM".
-  - Dưới-phải (`1:17`): ảnh cây xanh/không gian (không chữ).
+### Session 5 — "Tìm Cửa Hàng Gần Bạn" (xong, đã push)
+- Heading (`1:15`): TT Norms Pro Serif Medium 70px, `#2e2926`, căn giữa, nền `#f8f7f2` cao 153px, margin-top 25px so với section trước (đo y thật).
+- **Phát hiện quan trọng khi review**: đây là **carousel 3 slide / 6 chi nhánh**, không phải lưới tĩnh 2×2 như quét ban đầu — 2 slide sau nằm ở node `9:4` (x=1440) và `9:34` (x=2880), **ngoài khung `1:7` chính**, chỉ thấy được khi `get_metadata` ở cấp `0:1` (toàn canvas). Danh sách đầy đủ 6 chi nhánh, mỗi slide lưới 2×2 (720×588px/ô, ảnh xen kẽ thẻ thông tin):
+  1. **Kỳ Đồng Gallery** (`1:31`, nền `#fff9e8`) — "hẻm 5/20 kỳ Đồng, p. nhiêu lộc, tp. hCM"
+  2. **Quang Trung Station** (`1:18`, nền `#d5f2ff`) — "1014 Quang Trung, Thông Tây Hội, tp. hCM"
+  3. **Cao Thắng Mansion** (`9:20`, nền `#f2ffe3`) — "2/43 Cao Thắng, Bàn Cờ, tp. hcm"
+  4. **Vạn Phúc Square** (`9:7`, nền `#fff9e8`) — "104 Đinh Thị Thi, Hiệp Bình, tp.hcm"
+  5. **Nguyễn Trãi Corner** (`9:37`, nền `#d5f2ff`) — "214/B11 Nguyễn Trãi, Cầu Ông Lãnh, tp. hCM"
+  6. **Thảo Điền Villa** (`9:50`, nền `#fff9e8`) — "81 Xuân Thủy, An Khánh, tp. hCM"
+  Ảnh photo-only ở 2 ô còn lại mỗi slide: `1:16`,`1:17` (slide 1), `9:5`,`9:6` (slide 2), `9:35`,`9:36` (slide 3).
+- Mỗi thẻ thông tin: tên quán (TT Norms Pro Serif Medium 60px, 2 dòng), icon ghim + nhãn "địa chỉ" (URW DIN Bold 25px hoa), địa chỉ đầy đủ (URW DIN Medium 25px hoa).
+- **Hành vi tương tác bổ sung theo yêu cầu người dùng** (không có sẵn rõ ràng trong file Figma tĩnh, dựa theo bản proto/preview người dùng cung cấp):
+  - Hover vào ảnh: zoom nhẹ (`scale(1.05)`, transition mượt).
+  - Carousel tự trượt mỗi 3 giây, luôn theo 1 chiều trái→phải, không giật lùi khi lặp vòng — kỹ thuật: nhân bản slide đầu tiên gắn cuối track, trượt hết tới bản sao rồi "nhảy" tức thời (tắt transition) về slide 1 thật.
+- File: `public/css/sections/store-locator.css`, `public/js/components/store-carousel.js`. Ảnh trong `public/images/home/store-photo-1..6.png`, icon ghim dùng chung `public/images/shared/icon-map-pin.svg`.
 
 ### Session 6 — Bộ đôi ảnh sản phẩm lớn
 - Node `1:1151`: 2 ảnh ~737×803px ("IG 2", "IG 3") — "Gạo Rang Trần Châu Trắng" / "Olong Nướng Trần Châu Caramel". Cần xác nhận qua `get_design_context` lúc code: chữ là text thật hay bake trong ảnh.
