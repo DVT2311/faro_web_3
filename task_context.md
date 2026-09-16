@@ -1,12 +1,17 @@
 # task_context.md — Tóm tắt tiến trình & quyết định
 
 ## Trạng thái hiện tại
-**Session 0-5 đã xong, đã xác nhận khớp thiết kế và đã push lên `origin/main`.** Toàn bộ 5 session còn lại (6 → 10) trong `PROGRESS.md` vẫn ở trạng thái ⬜ Chưa làm. Trang `public/index.html` hiện có: ticker + navbar + hero (banner/divider/headline/mô tả) + ảnh tem scalloped + store locator carousel (6 chi nhánh). Sẵn sàng bắt đầu **Session 6 — Bộ đôi ảnh sản phẩm lớn**.
+**Session 0-6 đã xong, đã xác nhận khớp thiết kế và đã push lên `origin/main`.** Toàn bộ 4 session còn lại (7 → 10) trong `PROGRESS.md` vẫn ở trạng thái ⬜ Chưa làm. Trang `public/index.html` hiện có: ticker + navbar + hero (banner/divider/headline/mô tả) + ảnh tem scalloped + store locator carousel (6 chi nhánh) + bộ đôi ảnh sản phẩm. Sẵn sàng bắt đầu **Session 7 — "The New Harvest in Bloom"**.
 
 ## Bước tiếp theo
-Bắt đầu **Session 6** (node `1:1151`): 2 ảnh full-bleed cạnh nhau (~737×803px, "Gạo Rang Trần Châu Trắng" / "Olong Nướng Trần Châu Caramel"). **Cần gọi `get_design_context` trên `1:1151` để xác định chữ là text thật hay bake trong ảnh** trước khi quyết định cách dựng. Nhớ: (1) quét `get_metadata` ở cấp `0:1` phòng khi có thêm nội dung nằm ngoài khung 1440px chính (bài học Session 5), (2) đối chiếu y-start/y-end với section trước để tránh dư/thiếu khoảng cách (bài học Session 4). Xong thì dừng lại chờ xác nhận khớp thiết kế, rồi hỏi rõ ràng trước khi push git.
+Bắt đầu **Session 7** (node `1:216`): ảnh lớn viền tem tương tự Session 4 (ưu tiên clip-path, dùng ảnh sẵn viền nếu nhanh hơn), chữ chạy cong "The New" + "Harvest in Bloom", minh hoạ lá/cành, 2 khối màu trang trí, dải sọc `divider-stripe` (tái dùng component) đầu section. Nhớ: quét `get_metadata` ở cấp `0:1` phòng khi có nội dung ngoài khung 1440px chính (bài học Session 5), đối chiếu y-start/y-end với section trước (Session 4). Xong thì dừng lại chờ xác nhận khớp thiết kế, rồi hỏi rõ ràng trước khi push git.
 
 ## Đã làm được gì
+
+### Session 6 — Bộ đôi ảnh sản phẩm lớn (xong, đã push)
+- Đã kiểm tra `get_design_context` node `1:1151`: có text "MATCHA COCOMILK/85K" nhưng bị `overflow-clip` che khuất hoàn toàn — chữ thật hiển thị ("Trà Sữa Gạo Rang Trân Châu Trắng" / "Trà Sữa Olong Nướng Trân Châu Caramel") đã bake sẵn trong ảnh composite phức tạp (blend-multiply, badge tròn lồng bên trong) → xuất ảnh phẳng, không dựng lại CSS.
+- **Refactor nhỏ**: tách `.hero-divider` (Session 3) thành component dùng chung `public/css/components/divider-stripe.css` vì section này cũng cần đúng dải sọc đó.
+- File: `public/css/sections/product-highlight.css`, ảnh `product-highlight-1.png`/`-2.png`.
 
 ### Session 5 — "Tìm Cửa Hàng Gần Bạn" (xong, đã push)
 - **Phát hiện quan trọng**: đây là carousel 3 slide/6 chi nhánh, không phải lưới tĩnh 2×2 — 2 slide sau (Cao Thắng Mansion/Vạn Phúc Square, Nguyễn Trãi Corner/Thảo Điền Villa) nằm ở node `9:4`/`9:34`, **ngoài khung `1:7` chính** (x=1440, x=2880), chỉ phát hiện được khi quét `get_metadata` ở cấp `0:1` (toàn canvas) theo yêu cầu người dùng chỉ ra thiếu nội dung. Đã ghi bài học này vào `CLAUDE.md`.
@@ -74,8 +79,8 @@ FARO WEB 3/
 │   │   ├── main.css             # @import vendor → base → components → sections
 │   │   ├── vendor/bootstrap.min.css
 │   │   ├── base/                 # reset.css (+.page container), fonts.css, variables.css
-│   │   ├── components/            # ticker.css, navbar.css (Session 2)
-│   │   └── sections/               # hero.css (Session 3)
+│   │   ├── components/            # ticker.css, navbar.css (Session 2), divider-stripe.css (Session 3, refactor Session 6)
+│   │   └── sections/               # hero.css (Session 3), store-locator.css (Session 5), product-highlight.css (Session 6)
 │   ├── js/
 │   │   ├── main.js                 # placeholder
 │   │   └── components/store-carousel.js  # (Session 5)
@@ -83,7 +88,8 @@ FARO WEB 3/
 │   └── images/
 │       ├── shared/                 # logo, icon ticker/caret (Session 2), icon-map-pin.svg (Session 5)
 │       └── home/                    # hero-banner.png, headline-icon-1..6.svg, stamp-badge.svg (Session 3),
-│                                     # hero-stamp-photo.png (Session 4), store-photo-1..6.png (Session 5)
+│                                     # hero-stamp-photo.png (Session 4), store-photo-1..6.png (Session 5),
+│                                     # product-highlight-1..2.png (Session 6)
 ├── server/.gitkeep
 ├── CLAUDE.md
 ├── DESIGN.md

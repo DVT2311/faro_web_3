@@ -4,5 +4,7 @@
 @import url("base/reset.css");
 @import url("components/ticker.css");
 @import url("components/navbar.css");
+@import url("components/divider-stripe.css");
 @import url("sections/hero.css");
 @import url("sections/store-locator.css");
+@import url("sections/product-highlight.css");

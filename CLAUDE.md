@@ -18,8 +18,8 @@ FARO WEB 3/
 │   │   ├── main.css       # entry, @import theo thứ tự: vendor → base → components → sections
 │   │   ├── vendor/        # bootstrap.min.css
 │   │   ├── base/          # reset, fonts (@font-face), variables (design tokens)
-│   │   ├── components/    # ticker, navbar, footer, card, button... (dùng chung nhiều trang)
-│   │   └── sections/      # css riêng từng section của trang chủ
+│   │   ├── components/    # ticker, navbar, divider-stripe, footer, card, button... (dùng chung nhiều trang)
+│   │   └── sections/      # css riêng từng section của trang chủ (hero, store-locator, product-highlight...)
 │   ├── js/
 │   ├── fonts/              # tt-norms-pro-serif/, urw-din/
 │   └── images/

@@ -13,20 +13,6 @@
   display: block;
 }
 
-/* Dải sọc trang trí ở đường nối giữa ảnh hero và phần headline (node 1:96):
-   24 nhóm, mỗi nhóm 60px = 30px trắng + 30px kem, không có khoảng hở. */
-.hero-divider {
-  width: 100%;
-  height: 46px;
-  background-image: repeating-linear-gradient(
-    to right,
-    var(--color-white) 0,
-    var(--color-white) 30px,
-    var(--color-cream) 30px,
-    var(--color-cream) 60px
-  );
-}
-
 /* Headline + mô tả + stamp badge (node 1:55) */
 .hero-content {
   position: relative;

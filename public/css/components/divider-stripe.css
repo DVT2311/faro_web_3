@@ -1,0 +1,13 @@
+/* Dải sọc trang trí dùng lặp lại nhiều nơi (node 1:96, 1:257, 1:1181...):
+   24 nhóm, mỗi nhóm 60px = 30px trắng + 30px kem, không có khoảng hở. */
+.divider-stripe {
+  width: 100%;
+  height: 46px;
+  background-image: repeating-linear-gradient(
+    to right,
+    var(--color-white) 0,
+    var(--color-white) 30px,
+    var(--color-cream) 30px,
+    var(--color-cream) 60px
+  );
+}

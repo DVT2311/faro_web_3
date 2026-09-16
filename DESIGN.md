@@ -73,9 +73,12 @@ Bảng map file → `font-weight`/`font-style` chi tiết sẽ bổ sung khi cod
   - Carousel tự trượt mỗi 3 giây, luôn theo 1 chiều trái→phải, không giật lùi khi lặp vòng — kỹ thuật: nhân bản slide đầu tiên gắn cuối track, trượt hết tới bản sao rồi "nhảy" tức thời (tắt transition) về slide 1 thật.
 - File: `public/css/sections/store-locator.css`, `public/js/components/store-carousel.js`. Ảnh trong `public/images/home/store-photo-1..6.png`, icon ghim dùng chung `public/images/shared/icon-map-pin.svg`.
 
-### Session 6 — Bộ đôi ảnh sản phẩm lớn
-- Node `1:1151`: 2 ảnh ~737×803px ("IG 2", "IG 3") — "Gạo Rang Trần Châu Trắng" / "Olong Nướng Trần Châu Caramel". Cần xác nhận qua `get_design_context` lúc code: chữ là text thật hay bake trong ảnh.
-- Ticker lặp lại đầu section (`1:1181`) — tái dùng component Session 2.
+### Session 6 — Bộ đôi ảnh sản phẩm lớn (xong, đã push)
+- Node `1:1151`: 2 ảnh 720×803px cạnh nhau. Đã kiểm tra `get_design_context`: có 1 khối text "MATCHA COCOMILK/85K" nhưng bị `overflow-clip` che khuất hoàn toàn (nằm ngoài vùng hiển thị, không hiện ra) — **chữ thật sự hiển thị là caption đã bake sẵn trong ảnh composite** (nhiều lớp photo + blend-multiply + badge tròn lồng bên trong, quá phức tạp để dựng lại bằng CSS). Tên chính xác (đã xác minh qua ảnh, khác với ghi chú suy đoán ban đầu):
+  - **"Trà Sữa Gạo Rang Trân Châu Trắng"** (ảnh `product-highlight-1.png`)
+  - **"Trà Sữa Olong Nướng Trân Châu Caramel"** (ảnh `product-highlight-2.png`)
+- Dải sọc trang trí đầu section (node `1:1181`) — cùng loại với `1:96` (Session 3). Đã tách logic này ra component dùng chung `public/css/components/divider-stripe.css` (đổi tên từ `.hero-divider` cũ) vì được tái dùng ≥2 lần.
+- File: `public/css/sections/product-highlight.css`.
 
 ### Session 7 — "The New Harvest in Bloom"
 - Node `1:216`: ảnh viền tem tương tự Session 4.
