@@ -22,7 +22,9 @@ FARO WEB 3/
 │   │   └── sections/      # css riêng từng section của trang chủ
 │   ├── js/
 │   ├── fonts/              # tt-norms-pro-serif/, urw-din/
-│   └── images/home/
+│   └── images/
+│       ├── shared/         # asset dùng chung nhiều trang/section (logo, icon ticker...)
+│       └── home/           # ảnh riêng cho từng section của trang chủ
 ├── server/                 # placeholder cho Express (app.js, routes/, controllers/)
 ├── CLAUDE.md               # file này
 ├── DESIGN.md                # chi tiết thiết kế (design tokens, node Figma, đặc tả từng session)
@@ -33,6 +35,9 @@ Thêm trang mới sau này: thêm 1 file trong `css/sections/`, 1 dòng `@import
 
 ## Font
 Nguồn gốc: `C:\Users\dinhv\Downloads\FARO BRANDING FONT\` (`TTNormsProSerif\` + `URDIN\`). Đã copy vào `public/fonts/tt-norms-pro-serif/` và `public/fonts/urw-din/` (tên file URW DIN đã đổi từ `URW++ - URW DIN ...` sang dạng `URWDIN-...` cho gọn). Khai báo `@font-face` tại `public/css/base/fonts.css` (Session 1).
+
+## Layout
+Figma thiết kế ở canvas cố định 1440px. Toàn bộ nội dung trang phải nằm trong `<div class="page">` (CSS ở `public/css/base/reset.css`: `max-width: 1440px; margin: 0 auto;`) để không bị kéo dãn full-width trên màn hình lớn hơn 1440px — mọi section thêm sau này đều đặt bên trong `.page`.
 
 ## Quy tắc làm việc theo session (bắt buộc)
 - Xây **từng session một** theo đúng thứ tự trong `DESIGN.md`, không gộp/nhảy cóc.

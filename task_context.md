@@ -1,12 +1,17 @@
 # task_context.md — Tóm tắt tiến trình & quyết định
 
 ## Trạng thái hiện tại
-**Session 0 và Session 1 đã xong, đã xác nhận khớp thiết kế và đã push lên `origin/main`.** Toàn bộ 9 session còn lại (2 → 10) trong `PROGRESS.md` vẫn ở trạng thái ⬜ Chưa làm — trang `public/index.html` hiện chưa có bất kỳ section nội dung thật nào, chỉ là khung rỗng có link tới `css/main.css`. Sẵn sàng bắt đầu **Session 2 — Sticky ticker bar + Navbar**.
+**Session 0, 1, 2 đã xong, đã xác nhận khớp thiết kế và đã push lên `origin/main`.** Toàn bộ 8 session còn lại (3 → 10) trong `PROGRESS.md` vẫn ở trạng thái ⬜ Chưa làm. Trang `public/index.html` hiện có: ticker sticky + navbar (đè lên `.hero-placeholder` tạm, nền tối). Sẵn sàng bắt đầu **Session 3 — Hero banner + headline + mô tả + stamp badge**.
 
 ## Bước tiếp theo
-Bắt đầu **Session 2** (node `1:1281`, `1:44`): dựng thanh ticker sticky (marquee CSS) + navbar (logo + menu) đè lên hero, theo đặc tả ở `DESIGN.md`. Lấy asset logo/icon qua `get_design_context` lúc code (link asset Figma cũ đã hết hạn, phải tải lại). Xong thì dừng lại chờ xác nhận khớp thiết kế, rồi hỏi rõ ràng trước khi push git (xem quy tắc push ở `CLAUDE.md`).
+Bắt đầu **Session 3** (node `1:8`/`1:9` ảnh hero, `1:56`/`1:57` headline, `1:170` mô tả, `1:171` stamp badge): tải ảnh hero thật thay cho `.hero-placeholder`, dựng headline 3 dòng xen icon, đoạn mô tả, badge tem. Theo đặc tả ở `DESIGN.md`. Xong thì dừng lại chờ xác nhận khớp thiết kế, rồi hỏi rõ ràng trước khi push git.
 
 ## Đã làm được gì
+
+### Session 2 — Sticky ticker bar + Navbar (xong, đã push)
+- `public/css/components/ticker.css` + `navbar.css`. Asset SVG (logo, caret, 3 icon ticker) tải về `public/images/shared/` (dùng chung nhiều trang, tách khỏi `images/home/`).
+- Navbar tạm đè lên `.hero-placeholder` (nền tối) chờ ảnh hero thật ở Session 3.
+- **Sửa lỗi phát hiện khi review**: trang bị kéo dãn full-width trên màn hình lớn do chưa giới hạn theo canvas Figma 1440px. Thêm `<div class="page">` + CSS `.page { max-width: 1440px; margin: 0 auto; }` — quy ước này áp dụng cho mọi section về sau.
 
 ### Session 1 — Design tokens + font + reset (xong, đã push)
 - `public/css/base/variables.css`: design tokens (`--color-text: #2e2926`, `--color-accent: #c79763`, `--color-cream: #fffae5`, biến font-family).
@@ -46,15 +51,18 @@ FARO WEB 3/
 ├── package.json              # bootstrap + serve, script "dev": "serve public"
 ├── .gitignore
 ├── public/
-│   ├── index.html             # skeleton, chưa có section thật
+│   ├── index.html             # .page > ticker + navbar (đè .hero-placeholder tạm) — chưa có section nội dung khác
 │   ├── font-test.html          # trang test font (Session 1)
 │   ├── css/
-│   │   ├── main.css             # @import vendor → base
+│   │   ├── main.css             # @import vendor → base → components
 │   │   ├── vendor/bootstrap.min.css
-│   │   └── base/                 # reset.css, fonts.css, variables.css — ĐÃ có nội dung thật (Session 1)
+│   │   ├── base/                 # reset.css (+.page container), fonts.css, variables.css
+│   │   └── components/            # ticker.css, navbar.css (Session 2)
 │   ├── js/main.js                 # placeholder
 │   ├── fonts/tt-norms-pro-serif/, urw-din/   # đã copy đủ file .ttf
-│   └── images/home/                 # trống, tải dần theo session
+│   └── images/
+│       ├── shared/                 # logo, icon ticker/caret (Session 2)
+│       └── home/                    # trống, tải dần theo session
 ├── server/.gitkeep
 ├── CLAUDE.md
 ├── DESIGN.md

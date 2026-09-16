@@ -38,9 +38,12 @@ Bảng map file → `font-weight`/`font-style` chi tiết sẽ bổ sung khi cod
 - `@font-face` toàn bộ weight đã tải trong `public/css/base/fonts.css`.
 - Reset cơ bản trong `public/css/base/reset.css`.
 
-### Session 2 — Sticky ticker bar + Navbar
+### Session 2 — Sticky ticker bar + Navbar (xong, đã push)
 - **Ticker** (`1:1281`): nền `#fffae5`, cao 46px, full width. Marquee ngang, chữ hoa, URW DIN Medium 15px, màu `#c79763`: "Light Up Your Day" · "đơm hương mùa vụ mới" · "Cà Phê Đặc Sản" · "Đồ Uống Đậm Bản Sắc Địa Phương" · (lặp lại), xen icon nhỏ giữa các cụm. CSS animation marquee vô hạn, `position: sticky; top: 0`.
 - **Navbar** (`1:44`): logo trái (149×63px, x79 y69), menu phải: "Về chúng tôi" (icon mũi tên dropdown), "hợp tác", "faro group", "vie" — chữ hoa, URW DIN Regular 22px, trắng, gap ~64px. Đè lên hero, dưới ticker.
+- Đã dựng: `public/css/components/ticker.css`, `public/css/components/navbar.css`. Asset SVG (logo, caret, 3 icon ticker: star/cup/leaf) tải về `public/images/shared/` (dùng chung nhiều page sau này, không để trong `images/home/`).
+- Navbar hiện đè lên `.hero-placeholder` (nền tối tạm, định nghĩa trong `navbar.css`, có TODO) — sẽ thay bằng ảnh hero thật ở Session 3.
+- **Phát hiện thêm khi review**: Figma canvas cố định 1440px nhưng trang ban đầu không giới hạn chiều rộng nên bị kéo dãn full-width trên màn hình lớn. Đã sửa bằng cách bọc toàn bộ nội dung trong `<div class="page">` + CSS `.page { max-width: 1440px; margin: 0 auto; }` (`public/css/base/reset.css`). Quy tắc này áp dụng cho mọi section sau này — luôn nằm trong `.page`.
 
 ### Session 3 — Hero banner + headline + mô tả + stamp badge
 - Ảnh hero (`1:8`/`1:9`): full-width 1440px, cao ~799px, bo góc dưới.

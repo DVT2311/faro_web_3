@@ -13,8 +13,18 @@ body {
 body {
   color: var(--color-text);
   font-family: var(--font-body);
+  background: var(--color-white);
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
+}
+
+/* Figma thiết kế ở canvas cố định 1440px (Session 1: chỉ làm bản desktop) —
+   .page giữ đúng chiều rộng đó và canh giữa trên màn hình lớn hơn,
+   tránh các section bị kéo dãn hết chiều rộng trình duyệt. */
+.page {
+  max-width: 1440px;
+  margin: 0 auto;
+  position: relative;
 }
 
 h1,
