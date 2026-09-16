@@ -1,12 +1,18 @@
 # task_context.md — Tóm tắt tiến trình & quyết định
 
 ## Trạng thái hiện tại
-**Session 0-8 đã xong, đã xác nhận khớp thiết kế và đã push lên `origin/main`.** Toàn bộ 2 session còn lại (9 → 10) trong `PROGRESS.md` vẫn ở trạng thái ⬜ Chưa làm. Trang `public/index.html` hiện có: ticker + navbar + hero + ảnh tem + store locator carousel + bộ đôi ảnh sản phẩm + "Harvest in Bloom" + "Sản Phẩm" (3 thẻ). Sẵn sàng bắt đầu **Session 9 — "Về đội với mình" (careers)**.
+**Session 0-9 đã xong, đã xác nhận khớp thiết kế và đã push lên `origin/main`.** Chỉ còn Session 10 (Footer) trong `PROGRESS.md` ở trạng thái ⬜ Chưa làm — đây là session cuối cùng của trang chủ. Trang `public/index.html` hiện có mọi section từ ticker đến "Về đội với mình". Sẵn sàng bắt đầu **Session 10 — Footer**.
 
 ## Bước tiếp theo
-Bắt đầu **Session 9** (node `1:1254`): layout 2 cột (684px mỗi bên) — trái ảnh full-bleed, phải tiêu đề "Về đội với mình" + phụ đề + danh sách 4 vị trí tuyển dụng (lưu ý mục 1 và 4 trùng "Graphic Designer" trong Figma gốc — giữ nguyên, không tự sửa). Nhớ: lấy ảnh qua `get_screenshot` đúng node hiển thị chứ không dùng thẳng URL từ `get_design_context` (bài học Session 8). Xong thì dừng lại chờ xác nhận khớp thiết kế, rồi hỏi rõ ràng trước khi push git.
+Bắt đầu **Session 10** (node `1:339` và các node liên quan — xem bảng ở `DESIGN.md`): wordmark FARO lớn, cột link "VỀ CHÚNG TÔI", copyright, 5 badge tròn kiểu tem vị trí cửa hàng. Đây là **session cuối cùng của trang chủ** — sau khi xong và push, toàn bộ `public/index.html` sẽ hoàn chỉnh theo đúng Figma. Nhớ: lấy ảnh qua `get_screenshot` đúng node hiển thị (bài học Session 8), làm tròn số cho đường kẻ/viền mảnh (bài học Session 9), quét `get_metadata` ở cấp `0:1` phòng sót nội dung (bài học Session 5). Xong thì dừng lại chờ xác nhận khớp thiết kế, rồi hỏi rõ ràng trước khi push git.
 
 ## Đã làm được gì
+
+### Session 9 — "Về đội với mình" (xong, đã push)
+- 2 cột flex: ảnh (`get_screenshot` đúng kích thước hiển thị) + heading/danh sách 4 vị trí, nền `#edce90`.
+- **Sự cố + bài học**: đường kẻ phân cách ban đầu (1.12px solid black theo đúng số liệu Figma) hiển thị mờ không đều giữa 3 đường — do các giá trị thập phân lẻ (`gap: 22.5px`, `line-height: 23.62px`) cộng dồn khiến mỗi đường rơi vào vị trí pixel khác nhau. Thử sai 2 lần (làm nhạt màu → sai hướng, người dùng chỉ ra thiết kế gốc đậm hơn; rồi mới tìm đúng nguyên nhân là do số lẻ) trước khi sửa đúng: làm tròn số nguyên (`gap:22px`, `line-height:24px`) + tăng độ dày `2px` đen đặc. Đã ghi quy tắc chung vào `CLAUDE.md`.
+- **Việc cần làm lại sau**: danh sách tuyển dụng hiện tĩnh — khi có tính năng tuyển dụng thật (dynamic) sẽ quay lại chỉnh, theo yêu cầu người dùng.
+- File: `public/css/sections/careers.css`, ảnh `careers-photo.png`.
 
 ### Session 8 — "Sản Phẩm" (xong, đã push)
 - Lấy đúng text thật qua `get_design_context` (`1:195`/`1:196`), không dùng tên layer tiếng Anh sai. Nền section `#fffdf1` (ban đầu bỏ sót, người dùng chỉ ra thiếu màu nền, đã sửa). Hover zoom ảnh (`scale(1.05)`) theo yêu cầu.
@@ -91,7 +97,7 @@ FARO WEB 3/
 │   │   ├── components/            # ticker.css, navbar.css (Session 2), divider-stripe.css (Session 3, refactor Session 6)
 │   │   └── sections/               # hero.css (Session 3), store-locator.css (Session 5),
 │   │                                 # product-highlight.css (Session 6), harvest.css (Session 7),
-│   │                                 # products.css (Session 8)
+│   │                                 # products.css (Session 8), careers.css (Session 9)
 │   ├── js/
 │   │   ├── main.js                 # placeholder
 │   │   └── components/store-carousel.js  # (Session 5)
@@ -101,7 +107,7 @@ FARO WEB 3/
 │       └── home/                    # hero-banner.png, headline-icon-1..6.svg, stamp-badge.svg (Session 3),
 │                                     # hero-stamp-photo.png (Session 4), store-photo-1..6.png (Session 5),
 │                                     # product-highlight-1..2.png (Session 6), harvest-section.png (Session 7),
-│                                     # product-card-1..3.png (Session 8)
+│                                     # product-card-1..3.png (Session 8), careers-photo.png (Session 9)
 ├── server/.gitkeep
 ├── CLAUDE.md
 ├── DESIGN.md

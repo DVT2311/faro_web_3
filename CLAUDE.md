@@ -47,6 +47,8 @@ Các section (frame con trực tiếp của `1:7`) **có thể chồng lên nhau
 
 **Lấy ảnh sản phẩm/card qua `get_screenshot` trên đúng node container đã hiển thị (đã bo góc/crop), không lấy thẳng URL ảnh từ `get_design_context`** — URL đó trỏ tới ảnh GỐC chưa xử lý, có thể siêu to (từng gặp 3277×4096px, 9-12MB/ảnh ở Session 8) dù kích thước hiển thị thật chỉ vài trăm px.
 
+**Đường kẻ/viền mảnh (1-2px) nên dùng số nguyên cho các giá trị ảnh hưởng vị trí của nó** (`gap`, `line-height`, `padding` của các phần tử phía trên nó trong luồng) — số thập phân lẻ từ Figma (vd `22.5px`, `23.62px`) cộng dồn qua nhiều phần tử có thể khiến đường kẻ rơi vào vị trí nửa pixel, browser anti-alias làm mờ không đều giữa các đường kẻ giống hệt nhau về CSS (từng xảy ra ở Session 9, người dùng phát hiện qua so sánh trực quan).
+
 ## Layout
 Figma thiết kế ở canvas cố định 1440px. Toàn bộ nội dung trang phải nằm trong `<div class="page">` (CSS ở `public/css/base/reset.css`: `max-width: 1440px; margin: 0 auto;`) để không bị kéo dãn full-width trên màn hình lớn hơn 1440px — mọi section thêm sau này đều đặt bên trong `.page`.
 

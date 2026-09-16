@@ -94,14 +94,17 @@ Bảng map file → `font-weight`/`font-style` chi tiết sẽ bổ sung khi cod
 - **Phát hiện quan trọng khi lấy ảnh**: link ảnh trực tiếp từ `get_design_context` (image fill URL) là ảnh GỐC chưa crop/resize — đã gặp 3277×4096px, 9-12MB/ảnh, hoàn toàn không phù hợp cho web. Phải dùng `get_screenshot` trên đúng node container đã hiển thị (đã bo góc/crop đúng) để có ảnh đúng kích thước thật (335×315px, ~100-190KB) — áp dụng cho mọi ảnh sản phẩm/card từ giờ trở đi.
 - File: `public/css/sections/products.css`, ảnh `product-card-1..3.png`.
 
-### Session 9 — "Về đội với mình"
-- Node `1:1254`: 2 cột 684px.
-  - Trái: ảnh full-bleed (`1:1257`).
-  - Phải: "Về đội với mình" + "Job hay chờ bạn chung tay!" + danh sách:
+### Session 9 — "Về đội với mình" (xong, đã push)
+- Node `1:1254`: 2 cột flex (`flex:1 0 0` mỗi bên), nền section `#edce90`.
+  - Trái: ảnh full-bleed (`1:1257`, lấy qua `get_screenshot` đúng kích thước hiển thị 684×563px).
+  - Phải: "Về đội với mình" (TT Norms Pro Serif Medium 60px) + "Job hay chờ bạn chung tay!" (URW DIN 17px) + danh sách, mỗi dòng cách nhau 1 đường kẻ ngang:
     1. Graphic Designer — (01)
     2. Barista (Fulltime / Part-time) — (01)
     3. Content Creator — (01)
     4. Graphic Designer — (01) *(trùng mục 1 trong Figma gốc — giữ nguyên)*
+- **Bài học về đường kẻ mảnh**: giá trị Figma gốc có số thập phân lẻ (`gap: 22.5px`, `line-height: 23.62px`) — cộng dồn qua nhiều phần tử khiến đường kẻ phân cách (`.careers__divider`, cao 1-2px) rơi vào vị trí nửa pixel, browser anti-alias làm mờ không đều giữa 3 đường kẻ (người dùng phát hiện qua so sánh trực quan). Đã sửa bằng cách làm tròn các giá trị này thành số nguyên (`gap: 22px`, `line-height: 24px`) và tăng độ dày đường kẻ lên `2px` màu `#000000` đặc — đã ghi quy tắc chung vào `CLAUDE.md`.
+- **Việc cần làm lại sau**: đây là danh sách tĩnh — khi có tính năng tuyển dụng thật (dynamic, có thể lấy từ backend Express sau này), quay lại chỉnh sửa phần này theo yêu cầu người dùng.
+- File: `public/css/sections/careers.css`, ảnh `careers-photo.png`.
 
 ### Session 10 — Footer
 - Wordmark "FARO" outline (`1:339`) + "coffee inspiration".

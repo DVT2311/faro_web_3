@@ -14,12 +14,14 @@ Cập nhật lần cuối: 2026-09-15
 | 6 | Bộ đôi ảnh sản phẩm | ✅ Xong | 1:1151 | Ảnh xuất thẳng từ Figma (composite phức tạp, chữ caption đã bake sẵn). Tách `.hero-divider` thành component dùng chung `divider-stripe.css`. | ✅ |
 | 7 | Harvest in Bloom | ✅ Xong | 1:216 | Xuất nguyên section thành 1 ảnh phẳng (chữ chạy cong "The New" không xuất được qua code, chỉ đúng khi chụp ảnh). Ảnh đã có sẵn dải sọc trang trí ở trên cùng. | ✅ |
 | 8 | Sản Phẩm (3 thẻ) | ✅ Xong | 1:190 | Text thật lấy đúng qua get_design_context (không dùng tên layer sai). Nền `#fffdf1`, hover zoom ảnh. Sửa lỗi dùng nhầm ảnh gốc siêu to (3277×4096, 9-12MB) từ image fill URL → đổi sang get_screenshot đúng kích thước hiển thị (335×315, ~100-190KB). | ✅ |
-| 9 | Về đội với mình | 🔄 Đang làm | 1:1254 | | |
-| 10 | Footer | ⬜ Chưa làm | 1:339... | | |
+| 9 | Về đội với mình | ✅ Xong | 1:1254 | 2 cột: ảnh + heading/danh sách 4 vị trí, nền `#edce90`. Sửa đường kẻ phân cách bị mờ không đều do số thập phân (gap/line-height lẻ) → làm tròn số nguyên, đậm 2px. Ghi chú: sẽ chỉnh lại phần này khi làm tính năng tuyển dụng thật (dynamic). | ✅ |
+| 10 | Footer | 🔄 Đang làm | 1:339... | | |
 
 ## Việc đang dang dở / cần lưu ý khi vào lại
-- Session 0-8 đã xác nhận xong và đã push. Đang bắt đầu Session 9 — "Về đội với mình" (careers, node `1:1254`).
+- Session 0-9 đã xác nhận xong và đã push. Đang bắt đầu Session 10 — Footer (node `1:339` và các node liên quan).
 - **Lưu ý quan trọng phát hiện ở Session 8**: URL ảnh lấy trực tiếp từ `get_design_context` (image fill) có thể là ảnh GỐC siêu to (đã gặp 3277×4096px, 9-12MB/ảnh) chứ không phải kích thước hiển thị thật — luôn dùng `get_screenshot` trên đúng node hiển thị (container đã bo góc/crop) để lấy ảnh đúng kích thước, nhẹ, sẵn sàng cho web.
+- **Lưu ý phát hiện ở Session 9**: giá trị số thập phân lẻ từ Figma (vd `gap: 22.5px`, `line-height: 23.62px`) cộng dồn qua nhiều phần tử có thể khiến đường kẻ mảnh (1-2px) rơi vào vị trí nửa pixel, browser anti-alias làm mờ không đều giữa các đường — nên làm tròn số nguyên cho các giá trị ảnh hưởng tới viền/đường kẻ mảnh thay vì giữ nguyên số thập phân gốc.
+- **Việc cần làm lại sau** (theo yêu cầu người dùng): section "Về đội với mình" hiện là danh sách tĩnh — khi làm tính năng tuyển dụng thật (dynamic, có thể từ backend Express sau này), quay lại chỉnh sửa phần này.
 - Lưu ý phát hiện ở Session 3: node trùng lặp trong Figma (ticker/dải sọc lặp ở nhiều mốc y) không phải lúc nào cũng là "component giống hệt tái dùng". Cần double-check bằng screenshot/get_design_context riêng cho từng node trùng lặp, không mặc định giống nhau.
 - Lưu ý phát hiện ở Session 4: các section trong Figma có thể **chồng lên nhau** theo toạ độ y tuyệt đối thay vì luôn xếp nối tiếp — luôn đối chiếu y-start/y-end giữa các section liền kề trước khi giả định margin/spacing.
 - **Lưu ý quan trọng phát hiện ở Session 5**: Figma có thể có **frame nằm ngoài khung 1440px chính** (vd carousel/slider states) không nằm trong cây `1:7` — phải quét `get_metadata` ở cấp `0:1` (toàn page/canvas) chứ không chỉ trong `1:7`, để không bỏ sót nội dung như đã xảy ra (bỏ sót 2/3 số chi nhánh của store locator).
