@@ -106,11 +106,14 @@ Bảng map file → `font-weight`/`font-style` chi tiết sẽ bổ sung khi cod
 - **Việc cần làm lại sau**: đây là danh sách tĩnh — khi có tính năng tuyển dụng thật (dynamic, có thể lấy từ backend Express sau này), quay lại chỉnh sửa phần này theo yêu cầu người dùng.
 - File: `public/css/sections/careers.css`, ảnh `careers-photo.png`.
 
-### Session 10 — Footer
-- Wordmark "FARO" outline (`1:339`) + "coffee inspiration".
-- Cột "VỀ CHÚNG TÔI" (`1:340`): Faro Cafe / Faro Coffee Roastery / Faro Coffee Insights.
-- Đường kẻ (`1:345`) + "© Copyright 2026. All rights reserved." (`1:346`).
-- 5 badge tròn kiểu tem, chữ chạy cong: "quang trung station" (`1:347` & `1:1007`), "nguyễn trãi corner" (`1:493`), "vạn phúc square" (`1:650`), "kỳ đồng gallery" (`1:876`) — ưu tiên xuất thẳng thành ảnh PNG hoàn chỉnh.
+### Session 10 — Footer (xong, đã push — **session cuối cùng của trang chủ**)
+- Wordmark "FARO" outline (`1:339`, SVG có sẵn alpha, fill đen) + "coffee inspiration". Đè lên trên 5 badge (z-order: badge vẽ trước, wordmark vẽ sau/trên cùng — phần badge chồng lên nét chữ đen sẽ bị che, đúng theo thiết kế gốc).
+- Cột "VỀ CHÚNG TÔI" (`1:340`): Faro Cafe / Faro Coffee Roastery / Faro Coffee Insights (dựng bằng `<a>`, chưa có href thật).
+- Đường kẻ (`1:345`, `1px` đen đặc — không làm nhạt) + "© Copyright 2026. All rights reserved." (`1:346`).
+- 5 badge tròn kiểu tem, chữ chạy cong: "quang trung station" (`1:347` & `1:1007`), "nguyễn trãi corner" (`1:493`), "vạn phúc square" (`1:650`), "kỳ đồng gallery" (`1:876`).
+  - **Ảnh**: `get_screenshot` của MCP luôn render đè lên nền trắng đục (không giữ alpha thật) — nhiều lần thử chroma-key lại bằng code (PowerShell/System.Drawing) đều phải đánh đổi giữa viền răng cưa và nhạt màu nét vẽ. Giải pháp cuối: **người dùng tự export PNG trực tiếp từ Figma (scale 3x, giữ alpha thật)** rồi gửi file — copy thẳng vào `public/images/home/footer-badge-*.png`, không xử lý gì thêm. Kích thước hiển thị CSS giữ theo số liệu thiết kế gốc (browser tự scale xuống từ ảnh 3x, vẫn nét).
+  - **Vị trí**: 4/5 badge có `rotation≠0`. Toạ độ X/Y/W/H trong Figma Inspect panel cho các group bị xoay là **kích thước LOCAL (trước khi xoay)**, không phải bounding box sau khi xoay mà API `absoluteBoundingBox`/`get_screenshot` trả về — đã thử công thức "xoay quanh tâm hình học" để quy đổi giữa 2 hệ nhưng **không khớp thực tế** (kiểm chứng cụ thể bằng nhiều badge, sai lệch không theo quy luật dự đoán được, có thể do Figma dùng ma trận transform nội bộ khác). **Vị trí cuối cùng của 4 badge xoay là do người dùng tự so sánh trực tiếp với Figma (khoanh vùng đúng/sai trên ảnh chụp) rồi tinh chỉnh tay trực tiếp trong `footer.css`** — không phải kết quả của công thức. Badge không xoay (Kỳ Đồng, `rotation=0`) thì Inspect và API khớp nhau hoàn toàn, không có vấn đề gì.
+  - Ép GPU compositing layer riêng cho mỗi badge (`transform: translateZ(0)`) để tránh browser blur ảnh khi đè lên SVG ở vùng chồng lấn nhiều.
 
 ---
 *Sau khi mỗi session hoàn thành, bổ sung vào đúng phần tương ứng: file CSS/HTML đã dùng, tên file ảnh/font thực tế trong `public/`, và mọi sai lệch có chủ đích so với Figma gốc.*

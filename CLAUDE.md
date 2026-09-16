@@ -49,6 +49,10 @@ Các section (frame con trực tiếp của `1:7`) **có thể chồng lên nhau
 
 **Đường kẻ/viền mảnh (1-2px) nên dùng số nguyên cho các giá trị ảnh hưởng vị trí của nó** (`gap`, `line-height`, `padding` của các phần tử phía trên nó trong luồng) — số thập phân lẻ từ Figma (vd `22.5px`, `23.62px`) cộng dồn qua nhiều phần tử có thể khiến đường kẻ rơi vào vị trí nửa pixel, browser anti-alias làm mờ không đều giữa các đường kẻ giống hệt nhau về CSS (từng xảy ra ở Session 9, người dùng phát hiện qua so sánh trực quan).
 
+**Ảnh cần alpha (trong suốt) thật, đặc biệt khi sẽ đè lên nội dung khác** (vd badge đè lên logo): `get_screenshot` của MCP Figma luôn render đè lên nền trắng đục, không giữ alpha thật. Cố tái tạo alpha bằng xử lý ảnh (chroma-key/xoá pixel trắng) luôn phải đánh đổi giữa viền răng cưa (nếu cắt cứng) và nhạt màu nét vẽ (nếu làm mượt/gradient) — không có cách nào hoàn hảo. **Giải pháp tốt nhất: nhờ người dùng tự export PNG trực tiếp từ Figma (scale ≥3x, giữ alpha thật)** và gửi file, dùng thẳng không xử lý gì thêm.
+
+**Với Figma group bị xoay (rotation≠0)**: toạ độ X/Y/W/H trong panel Inspect của Figma là kích thước **LOCAL (trước khi xoay)**, khác với bounding box sau khi xoay mà API `absoluteBoundingBox`/`get_screenshot` trả về. Công thức "xoay quanh tâm hình học" tiêu chuẩn để quy đổi giữa 2 hệ toạ độ này **đã kiểm chứng KHÔNG khớp thực tế** (sai lệch không theo quy luật đơn giản, có thể do Figma dùng ma trận transform nội bộ khác cho các group/instance phức tạp). Với các phần tử bị xoay khó định vị chính xác bằng công thức: **nhờ người dùng so sánh trực tiếp với Figma (khoanh vùng đúng/sai trên ảnh chụp trình duyệt) rồi chỉnh tay** — hiệu quả hơn nhiều so với tiếp tục suy ngược toạ độ.
+
 ## Layout
 Figma thiết kế ở canvas cố định 1440px. Toàn bộ nội dung trang phải nằm trong `<div class="page">` (CSS ở `public/css/base/reset.css`: `max-width: 1440px; margin: 0 auto;`) để không bị kéo dãn full-width trên màn hình lớn hơn 1440px — mọi section thêm sau này đều đặt bên trong `.page`.
 

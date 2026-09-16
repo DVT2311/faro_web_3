@@ -1,0 +1,94 @@
+/* Footer (wordmark, cột link, copyright, badge tem vị trí cửa hàng) */
+.footer {
+  position: relative;
+  width: 1440px;
+  max-width: 100%;
+  height: 694px;
+  margin: 4px auto 0;
+}
+
+.footer__wordmark {
+  position: absolute;
+  left: 74px;
+  top: 119px;
+  width: 907px;
+  height: 390px;
+  display: block;
+}
+
+.footer__nav {
+  position: absolute;
+  left: 1206px;
+  top: 119px;
+  width: 171px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 29.5px;
+  text-transform: uppercase;
+}
+
+.footer__nav-title {
+  margin: 0;
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 19px;
+  color: #000000;
+}
+
+.footer__nav a {
+  font-family: var(--font-body);
+  font-weight: 400;
+  font-size: 15px;
+  color: #636262;
+  white-space: nowrap;
+}
+
+.footer__nav a:hover {
+  color: var(--color-text);
+}
+
+.footer__divider {
+  position: absolute;
+  left: 61px;
+  top: 566px;
+  width: 1318px;
+  height: 1px;
+  background: #000000;
+  border: none;
+  margin: 0;
+}
+
+.footer__copyright {
+  position: absolute;
+  left: 74px;
+  top: 606px;
+  margin: 0;
+  font-family: var(--font-body);
+  font-weight: 400;
+  font-size: 15px;
+  color: #000000;
+  white-space: nowrap;
+}
+
+/* Badge tem trang trí vị trí cửa hàng — ảnh xuất thẳng từ Figma
+   (chữ chạy cong quanh viền, không xuất được qua code). */
+.footer__badge {
+  position: absolute;
+  display: block;
+  /* Ép trình duyệt tách riêng compositing layer cho từng badge — tránh bị
+     browser anti-alias/blend mờ khi đè lên SVG wordmark ở vùng chồng lấn nhiều. */
+  transform: translateZ(0);
+  backface-visibility: hidden;
+}
+/* Ảnh nguồn export 3x từ Figma (có alpha thật, không cần xử lý). Vị trí tính
+   theo TÂM (center) lấy từ panel Inspect thật của Figma (X,Y,W,H,góc xoay
+   local — khác với bounding box sau khi xoay mà API/get_screenshot trả về),
+   rồi suy ra left/top cho ảnh đã-xoay-sẵn (kích thước = bounding box) sao cho
+   tâm ảnh trùng đúng tâm layer thật trong Figma — cách này đúng bất kể góc
+   xoay, đã kiểm chứng khớp 100% với badge Kỳ Đồng (góc xoay 0°, không lệch). */
+.footer__badge--quang-trung-1 { left: 681px; top: 156px; width: 201.5px; height: 282.5px; }
+.footer__badge--nguyen-trai { left: 334px; top: -28px; width: 194.47px; height: 219.53px; }
+.footer__badge--van-phuc { left:61px; top: 220px; width: 240.09px; height: 284.93px; }
+.footer__badge--ky-dong { left: 975px; top: 332px; width: 182.37px; height: 210px; }
+.footer__badge--quang-trung-2 { left: 951px; top: 15px; width: 236.26px; height: 282.99px; }

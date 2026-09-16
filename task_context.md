@@ -1,12 +1,20 @@
 # task_context.md — Tóm tắt tiến trình & quyết định
 
 ## Trạng thái hiện tại
-**Session 0-9 đã xong, đã xác nhận khớp thiết kế và đã push lên `origin/main`.** Chỉ còn Session 10 (Footer) trong `PROGRESS.md` ở trạng thái ⬜ Chưa làm — đây là session cuối cùng của trang chủ. Trang `public/index.html` hiện có mọi section từ ticker đến "Về đội với mình". Sẵn sàng bắt đầu **Session 10 — Footer**.
+**🎉 Toàn bộ 11 session (0-10) của trang chủ đã hoàn tất, xác nhận khớp thiết kế và đã push lên `origin/main`.** `public/index.html` đầy đủ từ ticker đến footer, khớp Figma. Đây là cột mốc lớn — homepage build xong.
 
 ## Bước tiếp theo
-Bắt đầu **Session 10** (node `1:339` và các node liên quan — xem bảng ở `DESIGN.md`): wordmark FARO lớn, cột link "VỀ CHÚNG TÔI", copyright, 5 badge tròn kiểu tem vị trí cửa hàng. Đây là **session cuối cùng của trang chủ** — sau khi xong và push, toàn bộ `public/index.html` sẽ hoàn chỉnh theo đúng Figma. Nhớ: lấy ảnh qua `get_screenshot` đúng node hiển thị (bài học Session 8), làm tròn số cho đường kẻ/viền mảnh (bài học Session 9), quét `get_metadata` ở cấp `0:1` phòng sót nội dung (bài học Session 5). Xong thì dừng lại chờ xác nhận khớp thiết kế, rồi hỏi rõ ràng trước khi push git.
+Chưa có chỉ định cụ thể — chờ người dùng quyết định bước kế tiếp: thêm trang mới, làm responsive tablet/mobile, hay bắt đầu backend Express (xem `CLAUDE.md` phần Stack). Khi có việc mới, tạo session tiếp theo trong `PROGRESS.md`/`DESIGN.md` theo đúng quy trình đã thiết lập (làm từng session, xác nhận khớp thiết kế, hỏi rõ trước khi push).
 
 ## Đã làm được gì
+
+### Session 10 — Footer (xong, đã push) — **session cuối cùng của trang chủ**
+- Wordmark FARO (SVG) + cột "VỀ CHÚNG TÔI" + copyright + 5 badge tem vị trí cửa hàng.
+- **Chuỗi sự cố + bài học lớn nhất dự án** (badge bị xoay):
+  1. Ảnh `get_screenshot` ban đầu bị nền trắng đục thay vì trong suốt (che mất chữ FARO khi đè lên) — thử nhiều lần xử lý chroma-key bằng code (PowerShell/System.Drawing) đều phải đánh đổi giữa viền răng cưa và nhạt màu, không hoàn hảo. **Giải pháp cuối: nhờ người dùng export PNG 3x trực tiếp từ Figma** (giữ alpha thật) — dùng thẳng, không xử lý gì thêm.
+  2. Vị trí 4/5 badge bị xoay liên tục sai dù đã tính toán nhiều lần bằng toạ độ API. Người dùng cung cấp số liệu thật từ panel Inspect của Figma (X/Y/W/H/góc xoay) — phát hiện đây là **toạ độ LOCAL (trước khi xoay)**, khác hệ với bounding-box-sau-khi-xoay mà API trả về. Thử công thức "xoay quanh tâm hình học" để quy đổi nhưng **không khớp thực tế** (kiểm chứng bằng số, sai không theo quy luật). Cuối cùng: **người dùng tự khoanh vùng đúng/sai trên ảnh chụp trình duyệt, rồi tự tay tinh chỉnh giá trị cuối trong `footer.css`**.
+- Bài học: với nội dung Figma phức tạp (xoay, alpha thật), đôi khi **hợp tác trực tiếp với người dùng (họ xem Figma thật) hiệu quả hơn nhiều so với cố suy ngược bằng API/công thức**. Đã ghi vào `CLAUDE.md`.
+- File: `public/css/sections/footer.css`, `public/js/` không đổi, ảnh `footer-badge-*.png` (bản export 3x của người dùng) + `footer-wordmark.svg`.
 
 ### Session 9 — "Về đội với mình" (xong, đã push)
 - 2 cột flex: ảnh (`get_screenshot` đúng kích thước hiển thị) + heading/danh sách 4 vị trí, nền `#edce90`.
@@ -67,9 +75,9 @@ Bắt đầu **Session 10** (node `1:339` và các node liên quan — xem bản
 - Đã commit + push lên `origin/main`.
 
 ## Còn dang dở / cần lưu ý
-- Chưa có bất kỳ ảnh nào tải về `public/images/home/` (đúng chủ đích — chỉ tải khi vào session cần dùng, xem quyết định #8).
-- Chưa quyết định/cài thư viện hỗ trợ hiệu ứng đặc thù (chữ chạy cong...) — để ngỏ, chờ chỉ định khi tới Session 4/7/10.
-- `public/index.html` chưa có section nội dung thật nào — sẽ thêm dần từ Session 2 trở đi.
+- Trang chủ đã hoàn tất toàn bộ — không còn section nào dang dở. Việc cần làm lại sau: "Về đội với mình" (Session 9) hiện là danh sách tĩnh, sẽ chỉnh khi có tính năng tuyển dụng thật.
+- Chưa từng cần dùng đến thư viện hỗ trợ hiệu ứng đặc thù (quyết định #8) — mọi hiệu ứng phức tạp (chữ chạy cong, viền tem, badge xoay) đều giải quyết bằng ảnh xuất thẳng từ Figma, không cần cài thêm gì vào `package.json`.
+- Responsive tablet/mobile: chưa làm (đúng phạm vi đã chốt — quyết định #4), sẽ làm khi có yêu cầu và/hoặc thiết kế Figma cho các kích thước đó.
 
 ## Các quyết định đã chốt
 1. Nguồn thiết kế: Figma `Faro-Web-dev`, fileKey `vkJeQ9o8oR3cfI1pp311wd`, trang chủ = node `1:7` (1440×7760px) — hiện là frame duy nhất trong file.
@@ -87,27 +95,27 @@ Bắt đầu **Session 10** (node `1:339` và các node liên quan — xem bản
 FARO WEB 3/
 ├── package.json              # bootstrap + serve, script "dev": "serve public"
 ├── .gitignore
-├── public/
-│   ├── index.html             # .page > ticker + navbar + hero banner/divider/headline/mô tả — chưa có section từ "Tìm Cửa Hàng Gần Bạn" trở xuống
-│   ├── font-test.html          # trang test font (Session 1)
+├── public/                     # HOÀN TẤT — trang chủ đầy đủ ticker → footer
+│   ├── index.html               # .page > ticker, navbar, hero, store-locator, product-highlight,
+│   │                             # harvest, products, careers, footer — đúng thứ tự Figma
+│   ├── font-test.html            # trang test font (Session 1)
 │   ├── css/
-│   │   ├── main.css             # @import vendor → base → components → sections
+│   │   ├── main.css               # @import vendor → base → components → sections (thứ tự đúng)
 │   │   ├── vendor/bootstrap.min.css
-│   │   ├── base/                 # reset.css (+.page container), fonts.css, variables.css
-│   │   ├── components/            # ticker.css, navbar.css (Session 2), divider-stripe.css (Session 3, refactor Session 6)
-│   │   └── sections/               # hero.css (Session 3), store-locator.css (Session 5),
-│   │                                 # product-highlight.css (Session 6), harvest.css (Session 7),
-│   │                                 # products.css (Session 8), careers.css (Session 9)
+│   │   ├── base/                   # reset.css (+.page container), fonts.css, variables.css
+│   │   ├── components/              # ticker.css, navbar.css, divider-stripe.css (dùng chung nhiều section)
+│   │   └── sections/                 # hero, store-locator, product-highlight, harvest,
+│   │                                   # products, careers, footer — 1 file/session
 │   ├── js/
-│   │   ├── main.js                 # placeholder
-│   │   └── components/store-carousel.js  # (Session 5)
+│   │   ├── main.js
+│   │   └── components/store-carousel.js
 │   ├── fonts/tt-norms-pro-serif/, urw-din/   # đã copy đủ file .ttf
 │   └── images/
-│       ├── shared/                 # logo, icon ticker/caret (Session 2), icon-map-pin.svg (Session 5)
-│       └── home/                    # hero-banner.png, headline-icon-1..6.svg, stamp-badge.svg (Session 3),
-│                                     # hero-stamp-photo.png (Session 4), store-photo-1..6.png (Session 5),
-│                                     # product-highlight-1..2.png (Session 6), harvest-section.png (Session 7),
-│                                     # product-card-1..3.png (Session 8), careers-photo.png (Session 9)
+│       ├── shared/                 # logo, icon ticker/caret, icon-map-pin, footer-wordmark.svg
+│       └── home/                    # hero-banner.png, headline-icon-1..6.svg, stamp-badge.svg,
+│                                     # hero-stamp-photo.png, store-photo-1..6.png,
+│                                     # product-highlight-1..2.png, harvest-section.png,
+│                                     # product-card-1..3.png, careers-photo.png, footer-badge-*.png
 ├── server/.gitkeep
 ├── CLAUDE.md
 ├── DESIGN.md
