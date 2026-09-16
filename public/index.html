@@ -35,9 +35,16 @@
     <nav class="navbar">
       <a href="/" class="navbar__logo"><img src="images/shared/logo-faro.svg" alt="FARO" /></a>
       <ul class="navbar__menu">
-        <li class="navbar__item">
-          Về chúng tôi
-          <img class="navbar__caret" src="images/shared/icon-caret-down.svg" alt="" />
+        <li class="navbar__item navbar__item--dropdown">
+          <button type="button" class="navbar__dropdown-toggle" aria-expanded="false" aria-controls="navbar-about-menu">
+            Về chúng tôi
+            <img class="navbar__caret" src="images/shared/icon-caret-down.svg" alt="" />
+          </button>
+          <ul class="navbar__dropdown" id="navbar-about-menu">
+            <li><a href="#">Faro Cafe</a></li>
+            <li><a href="#">Faro Coffee Roastery</a></li>
+            <li><a href="#">Faro Coffee Insights</a></li>
+          </ul>
         </li>
         <li class="navbar__item">hợp tác</li>
         <li class="navbar__item">faro group</li>
@@ -258,6 +265,7 @@
 
   <script src="js/components/store-carousel.js"></script>
   <script src="js/components/back-to-top.js"></script>
+  <script src="js/components/navbar-dropdown.js"></script>
   <script src="js/main.js"></script>
 </body>
 </html>

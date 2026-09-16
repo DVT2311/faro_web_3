@@ -1,12 +1,18 @@
 # task_context.md — Tóm tắt tiến trình & quyết định
 
 ## Trạng thái hiện tại
-**Toàn bộ 11 session (0-10) của trang chủ đã hoàn tất, khớp thiết kế Figma.** Đã bổ sung thêm 1 tính năng ngoài phạm vi Figma: nút **back-to-top**.
+**Toàn bộ 11 session (0-10) của trang chủ đã hoàn tất, khớp thiết kế Figma.** Đã bổ sung thêm 2 tính năng ngoài phạm vi Figma tĩnh: nút **back-to-top** và **dropdown "Về chúng tôi"** ở navbar.
 
 ## Bước tiếp theo
 Chưa có chỉ định cụ thể — chờ người dùng quyết định bước kế tiếp: thêm trang mới, làm responsive tablet/mobile, hay bắt đầu backend Express (xem `CLAUDE.md` phần Stack). Khi có việc mới, tạo session tiếp theo trong `PROGRESS.md`/`DESIGN.md` theo đúng quy trình đã thiết lập (làm từng session, xác nhận khớp thiết kế, hỏi rõ trước khi push).
 
 ## Đã làm được gì
+
+### Bổ sung ngoài Figma — Dropdown "Về chúng tôi" ở navbar (xong, đã push)
+- Không có trong file Figma (thiết kế gốc chỉ tĩnh) — làm theo yêu cầu trực tiếp của người dùng.
+- Mục "Về chúng tôi" trong navbar đổi từ `<li>` tĩnh sang `<button>` toggle, bấm vào xổ xuống danh sách 3 link giống cột footer: Faro Cafe / Faro Coffee Roastery / Faro Coffee Insights.
+- Caret xoay 180° khi mở; đóng khi click ra ngoài hoặc nhấn Esc. Hover đổi màu chữ sang `--color-accent` cho cả navbar item chính lẫn từng item trong dropdown.
+- File: `public/css/components/navbar.css` (thêm rule `.navbar__item--dropdown`, `.navbar__dropdown*`), `public/js/components/navbar-dropdown.js` (mới), markup dropdown trong `public/index.html`.
 
 ### Bổ sung ngoài Figma — Nút back-to-top (xong, đã push)
 - Không có trong file Figma (không thuộc session nào trong `DESIGN.md`) — làm theo yêu cầu trực tiếp của người dùng.
