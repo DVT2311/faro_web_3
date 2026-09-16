@@ -1,12 +1,16 @@
 # task_context.md — Tóm tắt tiến trình & quyết định
 
 ## Trạng thái hiện tại
-**Session 0-6 đã xong, đã xác nhận khớp thiết kế và đã push lên `origin/main`.** Toàn bộ 4 session còn lại (7 → 10) trong `PROGRESS.md` vẫn ở trạng thái ⬜ Chưa làm. Trang `public/index.html` hiện có: ticker + navbar + hero (banner/divider/headline/mô tả) + ảnh tem scalloped + store locator carousel (6 chi nhánh) + bộ đôi ảnh sản phẩm. Sẵn sàng bắt đầu **Session 7 — "The New Harvest in Bloom"**.
+**Session 0-7 đã xong, đã xác nhận khớp thiết kế và đã push lên `origin/main`.** Toàn bộ 3 session còn lại (8 → 10) trong `PROGRESS.md` vẫn ở trạng thái ⬜ Chưa làm. Trang `public/index.html` hiện có: ticker + navbar + hero + ảnh tem + store locator carousel + bộ đôi ảnh sản phẩm + "Harvest in Bloom". Sẵn sàng bắt đầu **Session 8 — "Sản Phẩm" (3 thẻ sản phẩm)**.
 
 ## Bước tiếp theo
-Bắt đầu **Session 7** (node `1:216`): ảnh lớn viền tem tương tự Session 4 (ưu tiên clip-path, dùng ảnh sẵn viền nếu nhanh hơn), chữ chạy cong "The New" + "Harvest in Bloom", minh hoạ lá/cành, 2 khối màu trang trí, dải sọc `divider-stripe` (tái dùng component) đầu section. Nhớ: quét `get_metadata` ở cấp `0:1` phòng khi có nội dung ngoài khung 1440px chính (bài học Session 5), đối chiếu y-start/y-end với section trước (Session 4). Xong thì dừng lại chờ xác nhận khớp thiết kế, rồi hỏi rõ ràng trước khi push git.
+Bắt đầu **Session 8** (node `1:190`): heading + subtext + 3 cột thẻ sản phẩm (Cà Phê Túi Nhúng, Đơm Hương Collection, Cà Phê Rang Hạt). **QUAN TRỌNG**: tên layer tại `1:195`/`1:196` là tiếng Anh sót từ template gốc — phải gọi `get_design_context` lấy đúng text thật, không dùng tên layer. Xong thì dừng lại chờ xác nhận khớp thiết kế, rồi hỏi rõ ràng trước khi push git.
 
 ## Đã làm được gì
+
+### Session 7 — "The New Harvest in Bloom" (xong, đã push)
+- Xuất nguyên section thành 1 ảnh phẳng (`harvest-section.png`, 1440×825px) — chữ chạy cong "The New" (text-path) hoàn toàn không xuất được qua `get_design_context`, chỉ đúng khi chụp ảnh; dải sọc trang trí đầu section cũng đã nằm sẵn trong ảnh.
+- CSS tối giản (`harvest.css`, chỉ 1 rule).
 
 ### Session 6 — Bộ đôi ảnh sản phẩm lớn (xong, đã push)
 - Đã kiểm tra `get_design_context` node `1:1151`: có text "MATCHA COCOMILK/85K" nhưng bị `overflow-clip` che khuất hoàn toàn — chữ thật hiển thị ("Trà Sữa Gạo Rang Trân Châu Trắng" / "Trà Sữa Olong Nướng Trân Châu Caramel") đã bake sẵn trong ảnh composite phức tạp (blend-multiply, badge tròn lồng bên trong) → xuất ảnh phẳng, không dựng lại CSS.
@@ -80,7 +84,8 @@ FARO WEB 3/
 │   │   ├── vendor/bootstrap.min.css
 │   │   ├── base/                 # reset.css (+.page container), fonts.css, variables.css
 │   │   ├── components/            # ticker.css, navbar.css (Session 2), divider-stripe.css (Session 3, refactor Session 6)
-│   │   └── sections/               # hero.css (Session 3), store-locator.css (Session 5), product-highlight.css (Session 6)
+│   │   └── sections/               # hero.css (Session 3), store-locator.css (Session 5),
+│   │                                 # product-highlight.css (Session 6), harvest.css (Session 7)
 │   ├── js/
 │   │   ├── main.js                 # placeholder
 │   │   └── components/store-carousel.js  # (Session 5)
@@ -89,7 +94,7 @@ FARO WEB 3/
 │       ├── shared/                 # logo, icon ticker/caret (Session 2), icon-map-pin.svg (Session 5)
 │       └── home/                    # hero-banner.png, headline-icon-1..6.svg, stamp-badge.svg (Session 3),
 │                                     # hero-stamp-photo.png (Session 4), store-photo-1..6.png (Session 5),
-│                                     # product-highlight-1..2.png (Session 6)
+│                                     # product-highlight-1..2.png (Session 6), harvest-section.png (Session 7)
 ├── server/.gitkeep
 ├── CLAUDE.md
 ├── DESIGN.md

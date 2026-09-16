@@ -80,11 +80,10 @@ Bảng map file → `font-weight`/`font-style` chi tiết sẽ bổ sung khi cod
 - Dải sọc trang trí đầu section (node `1:1181`) — cùng loại với `1:96` (Session 3). Đã tách logic này ra component dùng chung `public/css/components/divider-stripe.css` (đổi tên từ `.hero-divider` cũ) vì được tái dùng ≥2 lần.
 - File: `public/css/sections/product-highlight.css`.
 
-### Session 7 — "The New Harvest in Bloom"
-- Node `1:216`: ảnh viền tem tương tự Session 4.
-- Chữ cong "The New" (`1:224`) + chữ thẳng "Harvest in Bloom" (`1:225`) — có thể xuất thành ảnh/SVG nếu phức tạp.
-- Minh hoạ lá/cành (`1:226`), 2 khối màu trang trí (`1:221`, `1:222`).
-- Ticker lặp lại đầu section (`1:257`).
+### Session 7 — "The New Harvest in Bloom" (xong, đã push)
+- Node `1:216`: **xuất nguyên cả section thành 1 ảnh phẳng** (`get_screenshot`, lưu `public/images/home/harvest-section.png`, 1440×825px) thay vì dựng lại — gồm ảnh nền hạt cà phê, 2 khối màu trang trí (`1:221`,`1:222`), minh hoạ lá/cành xoay-scale phức tạp (`1:226`), và **chữ chạy cong "The New" (`1:224`, text-path) hoàn toàn không xuất được qua `get_design_context`** (tool bỏ qua text-path node) — chỉ hiện đúng khi chụp ảnh, xác nhận thực tế cho quy tắc ưu tiên ảnh với chữ chạy cong.
+- Dải sọc trang trí đầu section (`1:257`) **đã nằm sẵn trong ảnh chụp** — không cần overlay CSS riêng như Session 6.
+- CSS tối giản: `public/css/sections/harvest.css` chỉ 1 rule ảnh full-width 825px.
 
 ### Session 8 — "Sản Phẩm"
 - Node `1:190`: heading + subtext — **tên layer Figma tiếng Anh không khớp nội dung thật** (nội dung thật tiếng Việt "Sản Phẩm" + mô tả ngắn) → lấy đúng text qua `get_design_context` tại `1:195`/`1:196`.
