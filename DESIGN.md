@@ -85,12 +85,14 @@ Bảng map file → `font-weight`/`font-style` chi tiết sẽ bổ sung khi cod
 - Dải sọc trang trí đầu section (`1:257`) **đã nằm sẵn trong ảnh chụp** — không cần overlay CSS riêng như Session 6.
 - CSS tối giản: `public/css/sections/harvest.css` chỉ 1 rule ảnh full-width 825px.
 
-### Session 8 — "Sản Phẩm"
-- Node `1:190`: heading + subtext — **tên layer Figma tiếng Anh không khớp nội dung thật** (nội dung thật tiếng Việt "Sản Phẩm" + mô tả ngắn) → lấy đúng text qua `get_design_context` tại `1:195`/`1:196`.
-- 3 cột thẻ (397×524px), ảnh (335×315px) + tên + mô tả:
+### Session 8 — "Sản Phẩm" (xong, đã push)
+- Node `1:190`: heading + subtext — **tên layer Figma tiếng Anh không khớp nội dung thật** (nội dung thật tiếng Việt "Sản Phẩm" + mô tả ngắn) → lấy đúng text qua `get_design_context` tại `1:195`/`1:196`. Nền section `#fffdf1`.
+- 3 cột thẻ (397×524px), ảnh (335×315px) + tên + mô tả, hover ảnh zoom nhẹ (`scale(1.05)`):
   1. "Cà Phê Túi Nhúng" — "Cà phê Túi Nhúng tiện lợi chỉ cần nước nóng để pha, hương vị tươi mới từ cà phê chất lượng cao, đa dạng lựa chọn với nhiều hương vị sáng tạo."
   2. "Đơm Hương Collection" — "Được phát triển với 5 phiên bản hương: dưa lưới, gừng, chuối, dâu và nho, phù hợp cho cold brew, pour-over, cà phê trái cây, tonic hoặc seasonal menu."
   3. "Cà Phê Rang Hạt" — "Các dòng sản phẩm chất lượng ổn định với giá thành hợp lý, phù hợp với gu thưởng thức đại chúng để tạo nên hương vị đặc trưng cho quán của bạn."
+- **Phát hiện quan trọng khi lấy ảnh**: link ảnh trực tiếp từ `get_design_context` (image fill URL) là ảnh GỐC chưa crop/resize — đã gặp 3277×4096px, 9-12MB/ảnh, hoàn toàn không phù hợp cho web. Phải dùng `get_screenshot` trên đúng node container đã hiển thị (đã bo góc/crop đúng) để có ảnh đúng kích thước thật (335×315px, ~100-190KB) — áp dụng cho mọi ảnh sản phẩm/card từ giờ trở đi.
+- File: `public/css/sections/products.css`, ảnh `product-card-1..3.png`.
 
 ### Session 9 — "Về đội với mình"
 - Node `1:1254`: 2 cột 684px.

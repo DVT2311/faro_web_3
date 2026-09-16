@@ -1,12 +1,17 @@
 # task_context.md — Tóm tắt tiến trình & quyết định
 
 ## Trạng thái hiện tại
-**Session 0-7 đã xong, đã xác nhận khớp thiết kế và đã push lên `origin/main`.** Toàn bộ 3 session còn lại (8 → 10) trong `PROGRESS.md` vẫn ở trạng thái ⬜ Chưa làm. Trang `public/index.html` hiện có: ticker + navbar + hero + ảnh tem + store locator carousel + bộ đôi ảnh sản phẩm + "Harvest in Bloom". Sẵn sàng bắt đầu **Session 8 — "Sản Phẩm" (3 thẻ sản phẩm)**.
+**Session 0-8 đã xong, đã xác nhận khớp thiết kế và đã push lên `origin/main`.** Toàn bộ 2 session còn lại (9 → 10) trong `PROGRESS.md` vẫn ở trạng thái ⬜ Chưa làm. Trang `public/index.html` hiện có: ticker + navbar + hero + ảnh tem + store locator carousel + bộ đôi ảnh sản phẩm + "Harvest in Bloom" + "Sản Phẩm" (3 thẻ). Sẵn sàng bắt đầu **Session 9 — "Về đội với mình" (careers)**.
 
 ## Bước tiếp theo
-Bắt đầu **Session 8** (node `1:190`): heading + subtext + 3 cột thẻ sản phẩm (Cà Phê Túi Nhúng, Đơm Hương Collection, Cà Phê Rang Hạt). **QUAN TRỌNG**: tên layer tại `1:195`/`1:196` là tiếng Anh sót từ template gốc — phải gọi `get_design_context` lấy đúng text thật, không dùng tên layer. Xong thì dừng lại chờ xác nhận khớp thiết kế, rồi hỏi rõ ràng trước khi push git.
+Bắt đầu **Session 9** (node `1:1254`): layout 2 cột (684px mỗi bên) — trái ảnh full-bleed, phải tiêu đề "Về đội với mình" + phụ đề + danh sách 4 vị trí tuyển dụng (lưu ý mục 1 và 4 trùng "Graphic Designer" trong Figma gốc — giữ nguyên, không tự sửa). Nhớ: lấy ảnh qua `get_screenshot` đúng node hiển thị chứ không dùng thẳng URL từ `get_design_context` (bài học Session 8). Xong thì dừng lại chờ xác nhận khớp thiết kế, rồi hỏi rõ ràng trước khi push git.
 
 ## Đã làm được gì
+
+### Session 8 — "Sản Phẩm" (xong, đã push)
+- Lấy đúng text thật qua `get_design_context` (`1:195`/`1:196`), không dùng tên layer tiếng Anh sai. Nền section `#fffdf1` (ban đầu bỏ sót, người dùng chỉ ra thiếu màu nền, đã sửa). Hover zoom ảnh (`scale(1.05)`) theo yêu cầu.
+- **Phát hiện quan trọng**: URL ảnh trực tiếp từ `get_design_context` (image fill) là ảnh GỐC siêu to (gặp 3277×4096px, 9-12MB/ảnh) — đã đổi sang `get_screenshot` trên đúng node hiển thị để có ảnh đúng kích thước (335×315px, ~100-190KB). Đã ghi bài học này vào `CLAUDE.md`.
+- File: `public/css/sections/products.css`, ảnh `product-card-1..3.png`.
 
 ### Session 7 — "The New Harvest in Bloom" (xong, đã push)
 - Xuất nguyên section thành 1 ảnh phẳng (`harvest-section.png`, 1440×825px) — chữ chạy cong "The New" (text-path) hoàn toàn không xuất được qua `get_design_context`, chỉ đúng khi chụp ảnh; dải sọc trang trí đầu section cũng đã nằm sẵn trong ảnh.
@@ -85,7 +90,8 @@ FARO WEB 3/
 │   │   ├── base/                 # reset.css (+.page container), fonts.css, variables.css
 │   │   ├── components/            # ticker.css, navbar.css (Session 2), divider-stripe.css (Session 3, refactor Session 6)
 │   │   └── sections/               # hero.css (Session 3), store-locator.css (Session 5),
-│   │                                 # product-highlight.css (Session 6), harvest.css (Session 7)
+│   │                                 # product-highlight.css (Session 6), harvest.css (Session 7),
+│   │                                 # products.css (Session 8)
 │   ├── js/
 │   │   ├── main.js                 # placeholder
 │   │   └── components/store-carousel.js  # (Session 5)
@@ -94,7 +100,8 @@ FARO WEB 3/
 │       ├── shared/                 # logo, icon ticker/caret (Session 2), icon-map-pin.svg (Session 5)
 │       └── home/                    # hero-banner.png, headline-icon-1..6.svg, stamp-badge.svg (Session 3),
 │                                     # hero-stamp-photo.png (Session 4), store-photo-1..6.png (Session 5),
-│                                     # product-highlight-1..2.png (Session 6), harvest-section.png (Session 7)
+│                                     # product-highlight-1..2.png (Session 6), harvest-section.png (Session 7),
+│                                     # product-card-1..3.png (Session 8)
 ├── server/.gitkeep
 ├── CLAUDE.md
 ├── DESIGN.md

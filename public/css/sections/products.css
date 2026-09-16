@@ -1,0 +1,101 @@
+/* "Sản Phẩm" — 3 thẻ sản phẩm (node 1:190) */
+.products {
+  width: 100%;
+  padding: 96px 0;
+  margin-top: -11px; /* section trước (harvest) kết thúc ở page y=5542, section này bắt đầu ở y=5531 → chồng 11px */
+  background: #fffdf1;
+}
+
+.products__container {
+  width: 1280px;
+  max-width: 100%;
+  margin: 0 auto;
+}
+
+.products__header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  width: 770px;
+  max-width: 100%;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.products__header h2 {
+  margin: 0;
+  font-family: var(--font-heading);
+  font-weight: 500;
+  font-size: 70px;
+  line-height: 82.78px;
+  color: var(--color-text);
+}
+
+.products__header p {
+  margin: 0;
+  width: 672px;
+  max-width: 100%;
+  font-family: var(--font-body);
+  font-weight: 400;
+  font-size: 25px;
+  line-height: 30px;
+  letter-spacing: 0.2px;
+  color: var(--color-text);
+}
+
+.products__grid {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  margin-top: 80px;
+}
+
+.product-card {
+  width: 397px;
+  background: var(--color-white);
+  border-radius: 20px;
+  padding: 24px 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.product-card__image-wrap {
+  width: 100%;
+  height: 315px;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.product-card__image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.4s ease;
+}
+
+.product-card__image-wrap:hover .product-card__image {
+  transform: scale(1.05);
+}
+
+.product-card__title {
+  margin: 0;
+  font-family: var(--font-heading);
+  font-weight: 500;
+  font-size: 25px;
+  line-height: 40px;
+  color: var(--color-text);
+}
+
+.product-card__desc {
+  margin: 0;
+  height: 81px;
+  font-family: var(--font-body);
+  font-weight: 400;
+  font-size: 17px;
+  line-height: 20px;
+  color: var(--color-text);
+  text-align: justify;
+}
