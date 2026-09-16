@@ -1,12 +1,17 @@
 # task_context.md — Tóm tắt tiến trình & quyết định
 
 ## Trạng thái hiện tại
-**Session 0, 1, 2, 3 đã xong, đã xác nhận khớp thiết kế và đã push lên `origin/main`.** Toàn bộ 7 session còn lại (4 → 10) trong `PROGRESS.md` vẫn ở trạng thái ⬜ Chưa làm. Trang `public/index.html` hiện có: ticker sticky + navbar + ảnh hero + dải sọc divider + headline/icon + mô tả/stamp badge. Sẵn sàng bắt đầu **Session 4 — Ảnh hero dạng tem (scalloped mask)**.
+**Session 0-4 đã xong, đã xác nhận khớp thiết kế và đã push lên `origin/main`.** Toàn bộ 6 session còn lại (5 → 10) trong `PROGRESS.md` vẫn ở trạng thái ⬜ Chưa làm. Trang `public/index.html` hiện có: ticker + navbar + ảnh hero + divider + headline/icon + mô tả/badge + ảnh tem scalloped. Sẵn sàng bắt đầu **Session 5 — "Tìm Cửa Hàng Gần Bạn" (store locator)**.
 
 ## Bước tiếp theo
-Bắt đầu **Session 4** (node `1:330`): ảnh lớn viền răng cưa kiểu con tem (boolean-operation "Union" thật sự lần này, khác với Session 3 vốn hoá ra không bo góc). Ưu tiên SVG `clip-path` (xuất path từ Figma), hoặc dùng ảnh PNG viền sẵn nếu nhanh/đúng hơn. Xong thì dừng lại chờ xác nhận khớp thiết kế, rồi hỏi rõ ràng trước khi push git.
+Bắt đầu **Session 5** (heading `1:14`, 4 card `1:16`,`1:17`,`1:18`,`1:31`): heading căn giữa + lưới 2×2 (720×588px/ô) xen kẽ ảnh/thẻ thông tin địa chỉ 2 chi nhánh (Kỳ Đồng Gallery, Quang Trung Station). Theo đặc tả ở `DESIGN.md`. Nhớ kiểm tra y-start/y-end với section trước (`.hero-stamp-photo` kết thúc ở page y=1524+1038=2562) để không dư/thiếu khoảng cách như đã gặp ở Session 4. Xong thì dừng lại chờ xác nhận khớp thiết kế, rồi hỏi rõ ràng trước khi push git.
 
 ## Đã làm được gì
+
+### Session 4 — Ảnh hero dạng tem (scalloped mask) (xong, đã push)
+- Ảnh PNG xuất thẳng từ Figma (`get_screenshot` node `1:331`, viền tem có sẵn trong ảnh) lưu tại `public/images/home/hero-stamp-photo.png` — không dựng lại bằng CSS/SVG vì mask gốc quá phức tạp (nhiều lớp ảnh + rotate-90).
+- Thêm `.hero-stamp-photo` vào `hero.css`.
+- **Phát hiện + sửa khi review**: section này chồng lên 94px cuối của `.hero-content` trong Figma (không xếp nối tiếp) — sửa bằng `margin-top: -94px`. Đã ghi bài học này vào `CLAUDE.md` (luôn đối chiếu y-start/y-end giữa các section liền kề).
 
 ### Session 3 — Hero banner + headline + mô tả + stamp badge (xong, đã push)
 - `public/css/sections/hero.css` mới: `.hero-banner` (ảnh full-width, KHÔNG bo góc — đã kiểm tra mask gốc chỉ là rect phẳng), `.hero-content`/`.hero-headline` (3 dòng + 6 icon toạ độ tuyệt đối), `.hero-description` (mô tả + stamp badge).
@@ -69,7 +74,8 @@ FARO WEB 3/
 │   ├── fonts/tt-norms-pro-serif/, urw-din/   # đã copy đủ file .ttf
 │   └── images/
 │       ├── shared/                 # logo, icon ticker/caret (Session 2)
-│       └── home/                    # hero-banner.png, headline-icon-1..6.svg, stamp-badge.svg (Session 3)
+│       └── home/                    # hero-banner.png, headline-icon-1..6.svg, stamp-badge.svg (Session 3),
+│                                     # hero-stamp-photo.png (Session 4)
 ├── server/.gitkeep
 ├── CLAUDE.md
 ├── DESIGN.md

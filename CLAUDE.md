@@ -41,6 +41,8 @@ Khi dùng `get_metadata`/toạ độ x,y thô từ Figma cho các node con sâu 
 
 Khi Figma có nhiều node trông giống nhau lặp lại ở nhiều mốc y (vd để mô phỏng phần tử sticky khi cuộn): **không mặc định đó là bản sao y hệt** — kiểm tra riêng từng node bằng `get_screenshot`/`get_design_context` trước khi tái dùng component, vì có thể là 2 element khác nhau hoàn toàn (từng xảy ra ở Session 3: dải sọc trang trí `1:96` bị nhầm là ticker `1:1281`).
 
+Các section (frame con trực tiếp của `1:7`) **có thể chồng lên nhau** theo toạ độ y tuyệt đối thay vì luôn xếp nối tiếp — luôn lấy y-start của section sau trừ y-end (y+height) của section trước để biết có overlap hay không, trước khi dựng layout theo kiểu xếp khối tuần tự mặc định (từng xảy ra ở Session 4: ảnh tem `1:330` chồng lên 94px cuối của `.hero-content`, phải sửa bằng margin âm).
+
 ## Layout
 Figma thiết kế ở canvas cố định 1440px. Toàn bộ nội dung trang phải nằm trong `<div class="page">` (CSS ở `public/css/base/reset.css`: `max-width: 1440px; margin: 0 auto;`) để không bị kéo dãn full-width trên màn hình lớn hơn 1440px — mọi section thêm sau này đều đặt bên trong `.page`.
 

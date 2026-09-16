@@ -52,8 +52,10 @@ Bảng map file → `font-weight`/`font-style` chi tiết sẽ bổ sung khi cod
 - Stamp badge (`1:171`): SVG tải về `images/home/stamp-badge.svg`, đặt phía trên đoạn mô tả, căn giữa.
 - **Bổ sung phát hiện khi review**: dải sọc trang trí (node `1:96`, 1440×46, 24 nhóm mỗi nhóm 60px = 30px trắng + 30px kem, không hở) nằm ngay đường nối giữa ảnh hero và phần headline — ban đầu bị bỏ sót, đã thêm class `.hero-divider` (CSS `repeating-linear-gradient`). **Lưu ý quan trọng**: đây KHÔNG phải bản sao của thanh ticker chữ (`1:1281`) dù cùng kích thước 1440×46 — đã kiểm tra riêng bằng `get_screenshot`/`get_design_context` và xác nhận là 2 element khác nhau hoàn toàn. Khi gặp node trùng lặp ở nhiều mốc y trong Figma, luôn kiểm tra riêng từng cái, không mặc định là bản sao giống hệt.
 
-### Session 4 — Ảnh hero dạng tem (scalloped mask)
-- Node `1:330`: viền răng cưa kiểu con tem (boolean-operation "Union"). Ưu tiên SVG `clip-path`; dùng ảnh PNG viền sẵn nếu nhanh hơn.
+### Session 4 — Ảnh hero dạng tem (scalloped mask) (xong, đã push)
+- Node `1:330`: viền răng cưa kiểu con tem (boolean-operation "Union", nhiều lớp ảnh + transform rotate-90 phức tạp trong export gốc) — đã dùng ảnh PNG xuất thẳng từ `get_screenshot` node `1:331` (viền tem đã có sẵn trong ảnh, nền trong suốt quanh viền), lưu tại `public/images/home/hero-stamp-photo.png`, thay vì dựng lại bằng CSS/SVG.
+- CSS: `.hero-stamp-photo` (section cao 1038px) + ảnh căn giữa 1180.581×856.084px trong `hero.css`.
+- **Phát hiện + sửa khi review**: trong Figma, section này bắt đầu ở page y=1524, tức **chồng lên 94px cuối** của `.hero-content` (kết thúc ở y=1618=799+819) thay vì xếp nối tiếp — nếu xếp tuần tự như 2 khối riêng sẽ dư ~94px khoảng trắng. Đã sửa bằng `margin-top: -94px` trên `.hero-stamp-photo`. **Bài học chung cho các session sau**: luôn đối chiếu y-start/y-end giữa 2 section liền kề trong Figma trước khi giả định chúng xếp nối tiếp nhau.
 
 ### Session 5 — "Tìm Cửa Hàng Gần Bạn"
 - Heading (`1:15`): TT Norms Pro Serif Medium 70px, `#2e2926`, căn giữa.

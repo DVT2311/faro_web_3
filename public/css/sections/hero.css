@@ -95,3 +95,26 @@
   text-align: center;
   text-transform: uppercase;
 }
+
+/* Ảnh hero dạng tem (scalloped, node 1:330) — viền răng cưa đã có sẵn
+   trong ảnh PNG (xuất thẳng từ Figma, alpha trong suốt quanh viền) vì
+   đây là mask/boolean-operation phức tạp, dùng ảnh nhanh/đúng hơn dựng CSS. */
+.hero-stamp-photo {
+  position: relative;
+  width: 100%;
+  height: 1038px;
+  /* Trong Figma, section này (page y=1524) chồng lên 94px cuối của .hero-content
+     (kết thúc ở page y=1618=799+819) thay vì xếp nối tiếp — kéo lên đúng khoảng
+     đó để không bị dư khoảng trắng. */
+  margin-top: -94px;
+}
+
+.hero-stamp-photo img {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 1180.581px;
+  height: 856.084px;
+  display: block;
+}
