@@ -1,12 +1,18 @@
 # task_context.md — Tóm tắt tiến trình & quyết định
 
 ## Trạng thái hiện tại
-**Session 0, 1, 2 đã xong, đã xác nhận khớp thiết kế và đã push lên `origin/main`.** Toàn bộ 8 session còn lại (3 → 10) trong `PROGRESS.md` vẫn ở trạng thái ⬜ Chưa làm. Trang `public/index.html` hiện có: ticker sticky + navbar (đè lên `.hero-placeholder` tạm, nền tối). Sẵn sàng bắt đầu **Session 3 — Hero banner + headline + mô tả + stamp badge**.
+**Session 0, 1, 2, 3 đã xong, đã xác nhận khớp thiết kế và đã push lên `origin/main`.** Toàn bộ 7 session còn lại (4 → 10) trong `PROGRESS.md` vẫn ở trạng thái ⬜ Chưa làm. Trang `public/index.html` hiện có: ticker sticky + navbar + ảnh hero + dải sọc divider + headline/icon + mô tả/stamp badge. Sẵn sàng bắt đầu **Session 4 — Ảnh hero dạng tem (scalloped mask)**.
 
 ## Bước tiếp theo
-Bắt đầu **Session 3** (node `1:8`/`1:9` ảnh hero, `1:56`/`1:57` headline, `1:170` mô tả, `1:171` stamp badge): tải ảnh hero thật thay cho `.hero-placeholder`, dựng headline 3 dòng xen icon, đoạn mô tả, badge tem. Theo đặc tả ở `DESIGN.md`. Xong thì dừng lại chờ xác nhận khớp thiết kế, rồi hỏi rõ ràng trước khi push git.
+Bắt đầu **Session 4** (node `1:330`): ảnh lớn viền răng cưa kiểu con tem (boolean-operation "Union" thật sự lần này, khác với Session 3 vốn hoá ra không bo góc). Ưu tiên SVG `clip-path` (xuất path từ Figma), hoặc dùng ảnh PNG viền sẵn nếu nhanh/đúng hơn. Xong thì dừng lại chờ xác nhận khớp thiết kế, rồi hỏi rõ ràng trước khi push git.
 
 ## Đã làm được gì
+
+### Session 3 — Hero banner + headline + mô tả + stamp badge (xong, đã push)
+- `public/css/sections/hero.css` mới: `.hero-banner` (ảnh full-width, KHÔNG bo góc — đã kiểm tra mask gốc chỉ là rect phẳng), `.hero-content`/`.hero-headline` (3 dòng + 6 icon toạ độ tuyệt đối), `.hero-description` (mô tả + stamp badge).
+- Ảnh/icon tải về `public/images/home/`: `hero-banner.png`, `headline-icon-1..6.svg`, `stamp-badge.svg`.
+- **Phát hiện + sửa khi review**: thiếu dải sọc trang trí (node `1:96`, 30px trắng + 30px kem xen kẽ) ở đường nối hero/headline — đã bổ sung `.hero-divider`. Ban đầu code sai tỉ lệ (60/60 thay vì 30/30), đã sửa lại đúng theo `get_design_context` thực tế của node `1:96`.
+- Rút kinh nghiệm: node trùng lặp theo y trong Figma không mặc định là bản sao giống hệt — đã ghi vào `CLAUDE.md`.
 
 ### Session 2 — Sticky ticker bar + Navbar (xong, đã push)
 - `public/css/components/ticker.css` + `navbar.css`. Asset SVG (logo, caret, 3 icon ticker) tải về `public/images/shared/` (dùng chung nhiều trang, tách khỏi `images/home/`).
@@ -51,18 +57,19 @@ FARO WEB 3/
 ├── package.json              # bootstrap + serve, script "dev": "serve public"
 ├── .gitignore
 ├── public/
-│   ├── index.html             # .page > ticker + navbar (đè .hero-placeholder tạm) — chưa có section nội dung khác
+│   ├── index.html             # .page > ticker + navbar + hero banner/divider/headline/mô tả — chưa có section từ "Tìm Cửa Hàng Gần Bạn" trở xuống
 │   ├── font-test.html          # trang test font (Session 1)
 │   ├── css/
-│   │   ├── main.css             # @import vendor → base → components
+│   │   ├── main.css             # @import vendor → base → components → sections
 │   │   ├── vendor/bootstrap.min.css
 │   │   ├── base/                 # reset.css (+.page container), fonts.css, variables.css
-│   │   └── components/            # ticker.css, navbar.css (Session 2)
+│   │   ├── components/            # ticker.css, navbar.css (Session 2)
+│   │   └── sections/               # hero.css (Session 3)
 │   ├── js/main.js                 # placeholder
 │   ├── fonts/tt-norms-pro-serif/, urw-din/   # đã copy đủ file .ttf
 │   └── images/
 │       ├── shared/                 # logo, icon ticker/caret (Session 2)
-│       └── home/                    # trống, tải dần theo session
+│       └── home/                    # hero-banner.png, headline-icon-1..6.svg, stamp-badge.svg (Session 3)
 ├── server/.gitkeep
 ├── CLAUDE.md
 ├── DESIGN.md

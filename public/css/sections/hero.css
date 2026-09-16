@@ -1,0 +1,97 @@
+/* Hero banner (ảnh quán, node 1:8) */
+.hero-banner {
+  position: relative;
+  width: 100%;
+  height: 799px;
+  overflow: hidden;
+}
+
+.hero-banner img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Dải sọc trang trí ở đường nối giữa ảnh hero và phần headline (node 1:96):
+   24 nhóm, mỗi nhóm 60px = 30px trắng + 30px kem, không có khoảng hở. */
+.hero-divider {
+  width: 100%;
+  height: 46px;
+  background-image: repeating-linear-gradient(
+    to right,
+    var(--color-white) 0,
+    var(--color-white) 30px,
+    var(--color-cream) 30px,
+    var(--color-cream) 60px
+  );
+}
+
+/* Headline + mô tả + stamp badge (node 1:55) */
+.hero-content {
+  position: relative;
+  width: 1440px;
+  max-width: 100%;
+  height: 819px;
+  margin: 0 auto;
+}
+
+.hero-headline {
+  position: absolute;
+  left: 90px;
+  top: 136.146px;
+  width: 1260px;
+}
+
+.hero-headline p {
+  margin: 0;
+  font-family: var(--font-heading);
+  font-weight: 500;
+  font-size: 70.865px;
+  line-height: 83.803px;
+  color: var(--color-text);
+  text-align: center;
+  white-space: pre;
+}
+
+.hero-headline__icon {
+  position: absolute;
+  display: block;
+}
+.hero-headline__icon--1 { left: 141.638px; top: 108.76px; width: 99.795px; height: 92.224px; }
+.hero-headline__icon--2 { left: 797.082px; top: 116.245px; width: 63.812px; height: 82.489px; }
+.hero-headline__icon--3 { left: 374.469px; top: 223.554px; width: 75.074px; height: 75.947px; }
+.hero-headline__icon--4 { left: 449.391px; top: 311.629px; width: 74.722px; height: 67.217px; }
+.hero-headline__icon--5 { left: 894.824px; top: 223.554px; width: 66.224px; height: 69.239px; }
+.hero-headline__icon--6 { left: 928.234px; top: 308.592px; width: 99.211px; height: 70.214px; }
+
+.hero-description {
+  position: absolute;
+  left: 353px;
+  top: 485px;
+  width: 733px;
+}
+
+.hero-description__badge {
+  position: absolute;
+  left: 255.998px;
+  top: 0;
+  width: 220.136px;
+  height: 75.787px;
+  display: block;
+}
+
+.hero-description__text {
+  position: absolute;
+  left: 0;
+  top: 100px;
+  width: 733px;
+  margin: 0;
+  font-family: var(--font-body);
+  font-weight: 500;
+  font-size: 25px;
+  line-height: 40px;
+  color: var(--color-text);
+  text-align: center;
+  text-transform: uppercase;
+}

@@ -33,7 +33,7 @@ Bảng map file → `font-weight`/`font-style` chi tiết sẽ bổ sung khi cod
 
 ## Đặc tả chi tiết từng session
 
-### Session 1 — Design tokens + font + reset
+### Session 1 — Design tokens + font + reset (xong, đã push)
 - Custom properties trong `public/css/base/variables.css`.
 - `@font-face` toàn bộ weight đã tải trong `public/css/base/fonts.css`.
 - Reset cơ bản trong `public/css/base/reset.css`.
@@ -45,11 +45,12 @@ Bảng map file → `font-weight`/`font-style` chi tiết sẽ bổ sung khi cod
 - Navbar hiện đè lên `.hero-placeholder` (nền tối tạm, định nghĩa trong `navbar.css`, có TODO) — sẽ thay bằng ảnh hero thật ở Session 3.
 - **Phát hiện thêm khi review**: Figma canvas cố định 1440px nhưng trang ban đầu không giới hạn chiều rộng nên bị kéo dãn full-width trên màn hình lớn. Đã sửa bằng cách bọc toàn bộ nội dung trong `<div class="page">` + CSS `.page { max-width: 1440px; margin: 0 auto; }` (`public/css/base/reset.css`). Quy tắc này áp dụng cho mọi section sau này — luôn nằm trong `.page`.
 
-### Session 3 — Hero banner + headline + mô tả + stamp badge
-- Ảnh hero (`1:8`/`1:9`): full-width 1440px, cao ~799px, bo góc dưới.
-- Headline (`1:56`/`1:57`): 3 dòng, TT Norms Pro Serif Medium 70.865px, `#2e2926`, căn giữa, line-height 83.8px: "Cà phê sáng tạo [icon cốc] đồ uống đậm bản sắc [icon ly] địa phương, không gian [icon] thân thiện [icon ghim vị trí], tinh tế và, [icon lấp lánh] thoải mái".
-- Mô tả (`1:170`): "FARO là chuỗi thương hiệu cà phê với định hướng tạo ra những giá trị "trải nghiệm thật" cho khách hàng: trải nghiệm hương vị cà phê đặc sản, cùng với không gian thoải mái, tinh tế và thân thiện."
-- Stamp badge (`1:171`).
+### Session 3 — Hero banner + headline + mô tả + stamp badge (xong, đã push)
+- Ảnh hero (`1:8`/`1:9`): **thực tế KHÔNG bo góc** — đã kiểm tra mask SVG gốc, chỉ là 2 rect phẳng (full opaque), không có shape bo tròn nào. Dùng ảnh composite xuất thẳng từ Figma (`get_screenshot` node `1:9`) lưu tại `public/images/home/hero-banner.png`, full-width 1440px, cao 799px, `object-fit: cover`, không cần clip-path.
+- Headline (`1:56`/`1:57`): 3 dòng, TT Norms Pro Serif Medium 70.865px, `#2e2926`, căn giữa, line-height 83.8px, container 1260px (margin 90px mỗi bên) — dựng bằng 3 thẻ `<p>` với `white-space:pre` giữ nguyên khoảng trắng gốc từ Figma. 6 icon (`1:58,1:72,1:81,1:82,1:85,1:92`) tải SVG về `images/home/headline-icon-1..6.svg`, đặt `position:absolute` theo toạ độ px chính xác (toạ độ mọi node con trong Frame 48577/`1:55` đều tính trực tiếp theo gốc của `1:55`, không cộng dồn qua từng cấp cha trung gian).
+- Mô tả (`1:170`): "FARO là chuỗi thương hiệu cà phê với định hướng tạo ra những giá trị "trải nghiệm thật" cho khách hàng: trải nghiệm hương vị cà phê đặc sản, cùng với không gian thoải mái, tinh tế và thân thiện." URW DIN Medium 25px, hoa, width 733px, căn giữa.
+- Stamp badge (`1:171`): SVG tải về `images/home/stamp-badge.svg`, đặt phía trên đoạn mô tả, căn giữa.
+- **Bổ sung phát hiện khi review**: dải sọc trang trí (node `1:96`, 1440×46, 24 nhóm mỗi nhóm 60px = 30px trắng + 30px kem, không hở) nằm ngay đường nối giữa ảnh hero và phần headline — ban đầu bị bỏ sót, đã thêm class `.hero-divider` (CSS `repeating-linear-gradient`). **Lưu ý quan trọng**: đây KHÔNG phải bản sao của thanh ticker chữ (`1:1281`) dù cùng kích thước 1440×46 — đã kiểm tra riêng bằng `get_screenshot`/`get_design_context` và xác nhận là 2 element khác nhau hoàn toàn. Khi gặp node trùng lặp ở nhiều mốc y trong Figma, luôn kiểm tra riêng từng cái, không mặc định là bản sao giống hệt.
 
 ### Session 4 — Ảnh hero dạng tem (scalloped mask)
 - Node `1:330`: viền răng cưa kiểu con tem (boolean-operation "Union"). Ưu tiên SVG `clip-path`; dùng ảnh PNG viền sẵn nếu nhanh hơn.

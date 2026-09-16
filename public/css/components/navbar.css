@@ -1,11 +1,3 @@
-/* TODO Session 3: xoá .hero-placeholder khi có ảnh hero thật (node 1:8/1:9) trong sections/hero.css.
-   Navbar text màu trắng cần nền tối/ảnh phía sau mới nhìn thấy được, nên tạm thời dùng khối placeholder này để test. */
-.hero-placeholder {
-  position: relative;
-  height: 799px;
-  background: var(--color-text);
-}
-
 .navbar {
   position: absolute;
   top: 23px;
