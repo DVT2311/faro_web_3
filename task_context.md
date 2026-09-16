@@ -1,12 +1,18 @@
 # task_context.md — Tóm tắt tiến trình & quyết định
 
 ## Trạng thái hiện tại
-**🎉 Toàn bộ 11 session (0-10) của trang chủ đã hoàn tất, xác nhận khớp thiết kế và đã push lên `origin/main`.** `public/index.html` đầy đủ từ ticker đến footer, khớp Figma. Đây là cột mốc lớn — homepage build xong.
+**Toàn bộ 11 session (0-10) của trang chủ đã hoàn tất, khớp thiết kế Figma.** Đã bổ sung thêm 1 tính năng ngoài phạm vi Figma: nút **back-to-top**.
 
 ## Bước tiếp theo
 Chưa có chỉ định cụ thể — chờ người dùng quyết định bước kế tiếp: thêm trang mới, làm responsive tablet/mobile, hay bắt đầu backend Express (xem `CLAUDE.md` phần Stack). Khi có việc mới, tạo session tiếp theo trong `PROGRESS.md`/`DESIGN.md` theo đúng quy trình đã thiết lập (làm từng session, xác nhận khớp thiết kế, hỏi rõ trước khi push).
 
 ## Đã làm được gì
+
+### Bổ sung ngoài Figma — Nút back-to-top (xong, đã push)
+- Không có trong file Figma (không thuộc session nào trong `DESIGN.md`) — làm theo yêu cầu trực tiếp của người dùng.
+- Nút tròn cố định góc dưới-phải (`position: fixed`), ẩn mặc định, hiện khi `window.scrollY > 600px`, bấm sẽ `scrollTo({top:0, behavior:'smooth'})`.
+- Style theo design token sẵn có: nền `--color-text`, hover đổi `--color-accent`, icon mũi tên SVG inline (không cần tải asset).
+- File: `public/css/components/back-to-top.css` (component dùng chung, import trong `main.css`), `public/js/components/back-to-top.js`, markup thêm cuối `public/index.html` trước thẻ script.
 
 ### Session 10 — Footer (xong, đã push) — **session cuối cùng của trang chủ**
 - Wordmark FARO (SVG) + cột "VỀ CHÚNG TÔI" + copyright + 5 badge tem vị trí cửa hàng.
