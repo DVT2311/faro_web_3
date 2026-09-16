@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Font test — FARO</title>
+  <link rel="stylesheet" href="css/main.css" />
+  <style>
+    body { padding: 40px; background: var(--color-white); }
+    .sample { margin-bottom: 32px; }
+    .sample small { display: block; color: #888; font-family: monospace; margin-bottom: 4px; }
+    .heading-sample {
+      font-family: var(--font-heading);
+      font-weight: 500;
+      font-size: 70px;
+      color: var(--color-text);
+      line-height: 1.1;
+    }
+    .nav-sample {
+      font-family: var(--font-body);
+      font-weight: 400;
+      font-size: 22px;
+      color: var(--color-text);
+      text-transform: uppercase;
+    }
+    .ticker-sample {
+      font-family: var(--font-body);
+      font-weight: 500;
+      font-size: 15px;
+      color: var(--color-accent);
+      text-transform: uppercase;
+      background: var(--color-cream);
+      padding: 12px 16px;
+      display: inline-block;
+    }
+    .weights div { margin-bottom: 6px; }
+  </style>
+</head>
+<body>
+  <div class="sample">
+    <small>Heading — TT Norms Pro Serif, Medium 70px, #2e2926 (đối chiếu headline Session 3)</small>
+    <div class="heading-sample">Cà phê sáng tạo đồ uống đậm bản sắc</div>
+  </div>
+
+  <div class="sample">
+    <small>Nav — URW DIN, Regular 22px, hoa toàn bộ (đối chiếu Navbar Session 2)</small>
+    <div class="nav-sample">Về chúng tôi · hợp tác · faro group · vie</div>
+  </div>
+
+  <div class="sample">
+    <small>Ticker — URW DIN, Medium 15px, #c79763 trên nền #fffae5 (đối chiếu Ticker Session 2)</small>
+    <div class="ticker-sample">Light Up Your Day · Đơm Hương Mùa Vụ Mới · Cà Phê Đặc Sản</div>
+  </div>
+
+  <div class="sample weights">
+    <small>Toàn bộ weight TT Norms Pro Serif đã khai báo</small>
+    <div style="font-family: var(--font-heading); font-weight: 100;">100 Thin — Cà Phê Sáng Tạo</div>
+    <div style="font-family: var(--font-heading); font-weight: 200; font-style: italic;">200 ExtraLight Italic — Cà Phê Sáng Tạo</div>
+    <div style="font-family: var(--font-heading); font-weight: 300;">300 Light — Cà Phê Sáng Tạo</div>
+    <div style="font-family: var(--font-heading); font-weight: 400; font-style: italic;">400 Normal Italic — Cà Phê Sáng Tạo</div>
+    <div style="font-family: var(--font-heading); font-weight: 500;">500 Medium — Cà Phê Sáng Tạo</div>
+    <div style="font-family: var(--font-heading); font-weight: 700; font-style: italic;">700 Bold Italic — Cà Phê Sáng Tạo</div>
+    <div style="font-family: var(--font-heading); font-weight: 800;">800 ExtraBold — Cà Phê Sáng Tạo</div>
+    <div style="font-family: var(--font-heading); font-weight: 900; font-style: italic;">900 Black Italic — Cà Phê Sáng Tạo</div>
+    <div style="font-family: var(--font-heading); font-weight: 950; font-style: italic;">950 ExtraBlack Italic — Cà Phê Sáng Tạo</div>
+  </div>
+
+  <div class="sample weights">
+    <small>Toàn bộ weight URW DIN (chuẩn) đã khai báo</small>
+    <div style="font-family: var(--font-body); font-weight: 100;">100 Thin — CÀ PHÊ SÁNG TẠO</div>
+    <div style="font-family: var(--font-body); font-weight: 200;">200 XLight — CÀ PHÊ SÁNG TẠO</div>
+    <div style="font-family: var(--font-body); font-weight: 300;">300 Light — CÀ PHÊ SÁNG TẠO</div>
+    <div style="font-family: var(--font-body); font-weight: 400;">400 Regular — CÀ PHÊ SÁNG TẠO</div>
+    <div style="font-family: var(--font-body); font-weight: 500;">500 Medium — CÀ PHÊ SÁNG TẠO</div>
+    <div style="font-family: var(--font-body); font-weight: 600;">600 Demi — CÀ PHÊ SÁNG TẠO</div>
+    <div style="font-family: var(--font-body); font-weight: 700;">700 Bold — CÀ PHÊ SÁNG TẠO</div>
+    <div style="font-family: var(--font-body); font-weight: 900;">900 Black — CÀ PHÊ SÁNG TẠO</div>
+  </div>
+
+  <div class="sample weights">
+    <small>URW DIN Condensed / SemiCondensed (Regular 400)</small>
+    <div style="font-family: 'URW DIN Condensed'; font-weight: 400;">Condensed — CÀ PHÊ SÁNG TẠO</div>
+    <div style="font-family: 'URW DIN SemiCondensed'; font-weight: 400;">SemiCondensed — CÀ PHÊ SÁNG TẠO</div>
+  </div>
+</body>
+</html>

@@ -1,1 +1,11 @@
-/* Session 1: design tokens (màu, font-family, spacing) */
+:root {
+  /* Màu (design tokens từ Figma) */
+  --color-text: #2e2926;
+  --color-accent: #c79763;
+  --color-cream: #fffae5;
+  --color-white: #ffffff;
+
+  /* Font */
+  --font-heading: "TT Norms Pro Serif", serif;
+  --font-body: "URW DIN", sans-serif;
+}

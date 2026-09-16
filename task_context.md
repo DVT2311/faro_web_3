@@ -1,7 +1,14 @@
 # task_context.md — Tóm tắt tiến trình & quyết định
 
 ## Trạng thái hiện tại
-**Session 0 — Scaffold dự án & tooling đã xong và đã push lên git** (commit `42bb506`, nhánh `main`). Toàn bộ 11 session còn lại (1 → 10) trong `PROGRESS.md` vẫn ở trạng thái ⬜ Chưa làm — trang `public/index.html` hiện chưa có bất kỳ section nội dung thật nào, chỉ là khung rỗng. Sẵn sàng bắt đầu Session 1.
+**Session 0 và Session 1 đã xong và đã push lên git** (nhánh `main`). Toàn bộ 9 session còn lại (2 → 10) trong `PROGRESS.md` vẫn ở trạng thái ⬜ Chưa làm — trang `public/index.html` hiện chưa có bất kỳ section nội dung thật nào, chỉ là khung rỗng. Sẵn sàng bắt đầu Session 2 (Sticky ticker bar + Navbar).
+
+## Đã làm được gì (Session 1)
+- `public/css/base/variables.css`: design tokens (`--color-text: #2e2926`, `--color-accent: #c79763`, `--color-cream: #fffae5`, biến font-family).
+- `public/css/base/fonts.css`: `@font-face` đầy đủ cho 12 file TT Norms Pro Serif + 48 file URW DIN (3 family theo độ rộng: `URW DIN`, `URW DIN Condensed`, `URW DIN SemiCondensed`, weight 100–900).
+- `public/css/base/reset.css`: reset cơ bản.
+- `public/font-test.html`: trang test hiển thị mẫu chữ — người dùng đã xác nhận khớp thiết kế.
+- Đã commit + push lên `origin/main` cùng với cập nhật quy tắc push trong `CLAUDE.md` (mục "Git — quy tắc push").
 
 ## Đã làm được gì (Session 0)
 - Khởi tạo `package.json`, cài `bootstrap` + `serve` qua npm (không có bước build CSS/JS nào — xem lý do ở mục quyết định #3 bên dưới).
@@ -19,7 +26,7 @@
 - Chưa quyết định/cài thư viện hỗ trợ hiệu ứng đặc thù (chữ chạy cong...) — để ngỏ, chờ chỉ định khi tới Session 4/7/10.
 
 ## Bước tiếp theo
-Bắt đầu **Session 1 — Design tokens + font + reset**: điền nội dung thật cho 3 file `public/css/base/*.css` theo đặc tả ở `DESIGN.md` (mục "Session 1"), dựng 1 trang test hiển thị chữ mẫu 2 font để đối chiếu Figma. Xong thì dừng lại chờ xác nhận trước khi hỏi push git.
+Bắt đầu **Session 2 — Sticky ticker bar + Navbar** (node `1:1281`, `1:44`): dựng thanh ticker sticky (marquee CSS) + navbar (logo + menu) đè lên hero, theo đặc tả ở `DESIGN.md`. Lấy asset logo/icon qua `get_design_context` lúc code (link asset Figma cũ đã hết hạn). Xong thì dừng lại chờ xác nhận trước khi hỏi push git.
 
 ## Các quyết định đã chốt
 1. Nguồn thiết kế: Figma `Faro-Web-dev`, fileKey `vkJeQ9o8oR3cfI1pp311wd`, trang chủ = node `1:7` (1440×7760px) — hiện là frame duy nhất trong file.

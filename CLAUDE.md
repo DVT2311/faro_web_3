@@ -44,6 +44,9 @@ Nguồn gốc: `C:\Users\dinhv\Downloads\FARO BRANDING FONT\` (`TTNormsProSerif\
 - **Luôn đọc `CLAUDE.md` + `task_context.md` + `DESIGN.md` + `PROGRESS.md` trước khi bắt đầu bất kỳ session nào.** Đọc `task_context.md` trước tiên để nắm nhanh đã làm được gì, đang dang dở gì, bước tiếp theo là gì — rồi tra chi tiết thiết kế ở `DESIGN.md` và trạng thái từng session ở `PROGRESS.md` khi cần. CLAUDE.md không lặp lại chi tiết thiết kế đã có trong `DESIGN.md`.
 - **`task_context.md` là tài liệu tự cập nhật liên tục** (không chỉ tạo 1 lần) — sau mỗi session (dù xác nhận xong hay dừng giữa chừng) và sau mỗi quyết định mới, phải cập nhật lại 3 mục "Đã làm được gì" / "Còn dang dở" / "Bước tiếp theo" trong đó cho khớp trạng thái thực tế, để phiên làm việc mới đọc vào là hiểu ngay không cần hỏi lại người dùng.
 
-## Git
+## Git — quy tắc push (bắt buộc, đọc kỹ)
 - Remote `origin` → `https://github.com/DVT2311/faro_web_3.git`, nhánh `main`.
-- Chỉ push khi người dùng đồng ý ở từng lần, không tự động push.
+- **Mọi lần `git push`, không ngoại lệ, dù lớn hay nhỏ (kể cả chỉ sửa 1 dòng trong `PROGRESS.md`/`task_context.md`), đều phải hỏi lại người dùng bằng một câu hỏi rõ ràng và chờ câu trả lời đồng ý rõ ràng trước khi push.**
+- **Không được suy diễn sự đồng ý** từ các câu nói chung chung như "tiếp tục", "làm tiếp đi", "chuyển qua session tiếp theo", "ok" (trả lời cho câu hỏi khác)... Những câu đó KHÔNG phải là đồng ý push. Chỉ coi là đồng ý khi người dùng trả lời thẳng vào đúng câu hỏi push (vd "push đi", "ok push", "có, push luôn", hoặc xác nhận trực tiếp câu hỏi "có muốn push không?").
+- Nếu không chắc câu trả lời của người dùng có phải là đồng ý push hay không, phải hỏi lại cho rõ, không được push.
+- `git commit` (chưa push) thì không cần hỏi — chỉ áp dụng quy tắc hỏi trước khi thực hiện `git push`.

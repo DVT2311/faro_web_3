@@ -1,1 +1,157 @@
-/* Session 1: @font-face cho TT Norms Pro Serif + URW DIN */
+/* ==========================================================================
+   TT Norms Pro Serif — dùng cho heading
+   ========================================================================== */
+
+@font-face {
+  font-family: "TT Norms Pro Serif";
+  src: url("../../fonts/tt-norms-pro-serif/TTNormsProSerif-Thin.ttf") format("truetype");
+  font-weight: 100;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "TT Norms Pro Serif";
+  src: url("../../fonts/tt-norms-pro-serif/TTNormsProSerif-ExtraLightItalic.ttf") format("truetype");
+  font-weight: 200;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: "TT Norms Pro Serif";
+  src: url("../../fonts/tt-norms-pro-serif/TTNormsProSerif-Light.ttf") format("truetype");
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "TT Norms Pro Serif";
+  src: url("../../fonts/tt-norms-pro-serif/TTNormsProSerif-LightItalic.ttf") format("truetype");
+  font-weight: 300;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: "TT Norms Pro Serif";
+  src: url("../../fonts/tt-norms-pro-serif/TTNormsProSerif-NormalItalic.ttf") format("truetype");
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  /* Weight chính dùng cho headline/heading trong thiết kế Figma */
+  font-family: "TT Norms Pro Serif";
+  src: url("../../fonts/tt-norms-pro-serif/TTNormsProSerif-Medium.ttf") format("truetype");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "TT Norms Pro Serif";
+  src: url("../../fonts/tt-norms-pro-serif/TTNormsProSerif-BoldItalic.ttf") format("truetype");
+  font-weight: 700;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: "TT Norms Pro Serif";
+  src: url("../../fonts/tt-norms-pro-serif/TTNormsProSerif-ExtraBold.ttf") format("truetype");
+  font-weight: 800;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "TT Norms Pro Serif";
+  src: url("../../fonts/tt-norms-pro-serif/TTNormsProSerif-BlackItalic.ttf") format("truetype");
+  font-weight: 900;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: "TT Norms Pro Serif";
+  src: url("../../fonts/tt-norms-pro-serif/TTNormsProSerif-ExtraBlackItalic.ttf") format("truetype");
+  font-weight: 950;
+  font-style: italic;
+  font-display: swap;
+}
+
+/* Bản variable font gốc (Roman/Italic) — family riêng "TT Norms Pro Serif Var",
+   dự phòng khi cần weight không có sẵn ở bản static phía trên. */
+@font-face {
+  font-family: "TT Norms Pro Serif Var";
+  src: url("../../fonts/tt-norms-pro-serif/TTNormsProSerifVarRoman.ttf") format("truetype-variations");
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "TT Norms Pro Serif Var";
+  src: url("../../fonts/tt-norms-pro-serif/TTNormsProSerifVarItalic.ttf") format("truetype-variations");
+  font-weight: 100 900;
+  font-style: italic;
+  font-display: swap;
+}
+
+/* ==========================================================================
+   URW DIN — dùng cho nav/body/label. 3 family riêng theo độ rộng:
+   "URW DIN" (chuẩn), "URW DIN Condensed", "URW DIN SemiCondensed".
+   ========================================================================== */
+
+/* --- URW DIN (chuẩn) --- */
+@font-face { font-family: "URW DIN"; src: url("../../fonts/urw-din/URWDIN-Thin.ttf") format("truetype"); font-weight: 100; font-style: normal; font-display: swap; }
+@font-face { font-family: "URW DIN"; src: url("../../fonts/urw-din/URWDIN-Thin-Italic.ttf") format("truetype"); font-weight: 100; font-style: italic; font-display: swap; }
+@font-face { font-family: "URW DIN"; src: url("../../fonts/urw-din/URWDIN-XLight.ttf") format("truetype"); font-weight: 200; font-style: normal; font-display: swap; }
+@font-face { font-family: "URW DIN"; src: url("../../fonts/urw-din/URWDIN-XLight-Italic.ttf") format("truetype"); font-weight: 200; font-style: italic; font-display: swap; }
+@font-face { font-family: "URW DIN"; src: url("../../fonts/urw-din/URWDIN-Light.ttf") format("truetype"); font-weight: 300; font-style: normal; font-display: swap; }
+@font-face { font-family: "URW DIN"; src: url("../../fonts/urw-din/URWDIN-Light-Italic.ttf") format("truetype"); font-weight: 300; font-style: italic; font-display: swap; }
+@font-face {
+  /* Weight chính dùng cho nav/body (Regular) trong thiết kế Figma */
+  font-family: "URW DIN"; src: url("../../fonts/urw-din/URWDIN.ttf") format("truetype"); font-weight: 400; font-style: normal; font-display: swap;
+}
+@font-face { font-family: "URW DIN"; src: url("../../fonts/urw-din/URWDIN-Italic.ttf") format("truetype"); font-weight: 400; font-style: italic; font-display: swap; }
+@font-face {
+  /* Weight chính dùng cho ticker/label (Medium) trong thiết kế Figma */
+  font-family: "URW DIN"; src: url("../../fonts/urw-din/URWDIN-Medium.ttf") format("truetype"); font-weight: 500; font-style: normal; font-display: swap;
+}
+@font-face { font-family: "URW DIN"; src: url("../../fonts/urw-din/URWDIN-Medium-Italic.ttf") format("truetype"); font-weight: 500; font-style: italic; font-display: swap; }
+@font-face { font-family: "URW DIN"; src: url("../../fonts/urw-din/URWDIN-Demi.ttf") format("truetype"); font-weight: 600; font-style: normal; font-display: swap; }
+@font-face { font-family: "URW DIN"; src: url("../../fonts/urw-din/URWDIN-Demi-Italic.ttf") format("truetype"); font-weight: 600; font-style: italic; font-display: swap; }
+@font-face { font-family: "URW DIN"; src: url("../../fonts/urw-din/URWDIN-Bold.ttf") format("truetype"); font-weight: 700; font-style: normal; font-display: swap; }
+@font-face { font-family: "URW DIN"; src: url("../../fonts/urw-din/URWDIN-Bold-Italic.ttf") format("truetype"); font-weight: 700; font-style: italic; font-display: swap; }
+@font-face { font-family: "URW DIN"; src: url("../../fonts/urw-din/URWDIN-Black.ttf") format("truetype"); font-weight: 900; font-style: normal; font-display: swap; }
+@font-face { font-family: "URW DIN"; src: url("../../fonts/urw-din/URWDIN-Black-Italic.ttf") format("truetype"); font-weight: 900; font-style: italic; font-display: swap; }
+
+/* --- URW DIN Condensed --- */
+@font-face { font-family: "URW DIN Condensed"; src: url("../../fonts/urw-din/URWDIN-Cond-Thin.ttf") format("truetype"); font-weight: 100; font-style: normal; font-display: swap; }
+@font-face { font-family: "URW DIN Condensed"; src: url("../../fonts/urw-din/URWDIN-Cond-Thin-Italic.ttf") format("truetype"); font-weight: 100; font-style: italic; font-display: swap; }
+@font-face { font-family: "URW DIN Condensed"; src: url("../../fonts/urw-din/URWDIN-Cond-XLight.ttf") format("truetype"); font-weight: 200; font-style: normal; font-display: swap; }
+@font-face { font-family: "URW DIN Condensed"; src: url("../../fonts/urw-din/URWDIN-Cond-XLight-Italic.ttf") format("truetype"); font-weight: 200; font-style: italic; font-display: swap; }
+@font-face { font-family: "URW DIN Condensed"; src: url("../../fonts/urw-din/URWDIN-Cond-Light.ttf") format("truetype"); font-weight: 300; font-style: normal; font-display: swap; }
+@font-face { font-family: "URW DIN Condensed"; src: url("../../fonts/urw-din/URWDIN-Cond-Light-Italic.ttf") format("truetype"); font-weight: 300; font-style: italic; font-display: swap; }
+@font-face { font-family: "URW DIN Condensed"; src: url("../../fonts/urw-din/URWDIN-Cond.ttf") format("truetype"); font-weight: 400; font-style: normal; font-display: swap; }
+@font-face { font-family: "URW DIN Condensed"; src: url("../../fonts/urw-din/URWDIN-Cond-Italic.ttf") format("truetype"); font-weight: 400; font-style: italic; font-display: swap; }
+@font-face { font-family: "URW DIN Condensed"; src: url("../../fonts/urw-din/URWDIN-Cond-Medium.ttf") format("truetype"); font-weight: 500; font-style: normal; font-display: swap; }
+@font-face { font-family: "URW DIN Condensed"; src: url("../../fonts/urw-din/URWDIN-Cond-Medium-Italic.ttf") format("truetype"); font-weight: 500; font-style: italic; font-display: swap; }
+@font-face { font-family: "URW DIN Condensed"; src: url("../../fonts/urw-din/URWDIN-Cond-Demi.ttf") format("truetype"); font-weight: 600; font-style: normal; font-display: swap; }
+@font-face { font-family: "URW DIN Condensed"; src: url("../../fonts/urw-din/URWDIN-Cond-Demi-Italic.ttf") format("truetype"); font-weight: 600; font-style: italic; font-display: swap; }
+@font-face { font-family: "URW DIN Condensed"; src: url("../../fonts/urw-din/URWDIN-Cond-Bold.ttf") format("truetype"); font-weight: 700; font-style: normal; font-display: swap; }
+@font-face { font-family: "URW DIN Condensed"; src: url("../../fonts/urw-din/URWDIN-Cond-Bold-Italic.ttf") format("truetype"); font-weight: 700; font-style: italic; font-display: swap; }
+@font-face { font-family: "URW DIN Condensed"; src: url("../../fonts/urw-din/URWDIN-Cond-Black.ttf") format("truetype"); font-weight: 900; font-style: normal; font-display: swap; }
+@font-face { font-family: "URW DIN Condensed"; src: url("../../fonts/urw-din/URWDIN-Cond-Black-Italic.ttf") format("truetype"); font-weight: 900; font-style: italic; font-display: swap; }
+
+/* --- URW DIN SemiCondensed --- */
+@font-face { font-family: "URW DIN SemiCondensed"; src: url("../../fonts/urw-din/URWDIN-SemiCond-Thin.ttf") format("truetype"); font-weight: 100; font-style: normal; font-display: swap; }
+@font-face { font-family: "URW DIN SemiCondensed"; src: url("../../fonts/urw-din/URWDIN-SemiCond-Thin-Italic.ttf") format("truetype"); font-weight: 100; font-style: italic; font-display: swap; }
+@font-face { font-family: "URW DIN SemiCondensed"; src: url("../../fonts/urw-din/URWDIN-SemiCond-XLight.ttf") format("truetype"); font-weight: 200; font-style: normal; font-display: swap; }
+@font-face { font-family: "URW DIN SemiCondensed"; src: url("../../fonts/urw-din/URWDIN-SemiCond-XLight-Italic.ttf") format("truetype"); font-weight: 200; font-style: italic; font-display: swap; }
+@font-face { font-family: "URW DIN SemiCondensed"; src: url("../../fonts/urw-din/URWDIN-SemiCond-Light.ttf") format("truetype"); font-weight: 300; font-style: normal; font-display: swap; }
+@font-face { font-family: "URW DIN SemiCondensed"; src: url("../../fonts/urw-din/URWDIN-SemiCond-Light-Italic.ttf") format("truetype"); font-weight: 300; font-style: italic; font-display: swap; }
+@font-face { font-family: "URW DIN SemiCondensed"; src: url("../../fonts/urw-din/URWDIN-SemiCond.ttf") format("truetype"); font-weight: 400; font-style: normal; font-display: swap; }
+@font-face { font-family: "URW DIN SemiCondensed"; src: url("../../fonts/urw-din/URWDIN-SemiCond-Italic.ttf") format("truetype"); font-weight: 400; font-style: italic; font-display: swap; }
+@font-face { font-family: "URW DIN SemiCondensed"; src: url("../../fonts/urw-din/URWDIN-SemiCond-Medium.ttf") format("truetype"); font-weight: 500; font-style: normal; font-display: swap; }
+@font-face { font-family: "URW DIN SemiCondensed"; src: url("../../fonts/urw-din/URWDIN-SemiCond-Medium-Italic.ttf") format("truetype"); font-weight: 500; font-style: italic; font-display: swap; }
+@font-face { font-family: "URW DIN SemiCondensed"; src: url("../../fonts/urw-din/URWDIN-SemiCond-Demi.ttf") format("truetype"); font-weight: 600; font-style: normal; font-display: swap; }
+@font-face { font-family: "URW DIN SemiCondensed"; src: url("../../fonts/urw-din/URWDIN-SemiCond-Demi-Italic.ttf") format("truetype"); font-weight: 600; font-style: italic; font-display: swap; }
+@font-face { font-family: "URW DIN SemiCondensed"; src: url("../../fonts/urw-din/URWDIN-SemiCond-Bold.ttf") format("truetype"); font-weight: 700; font-style: normal; font-display: swap; }
+@font-face { font-family: "URW DIN SemiCondensed"; src: url("../../fonts/urw-din/URWDIN-SemiCond-Bold-Italic.ttf") format("truetype"); font-weight: 700; font-style: italic; font-display: swap; }
+@font-face { font-family: "URW DIN SemiCondensed"; src: url("../../fonts/urw-din/URWDIN-SemiCond-Black.ttf") format("truetype"); font-weight: 900; font-style: normal; font-display: swap; }
+@font-face { font-family: "URW DIN SemiCondensed"; src: url("../../fonts/urw-din/URWDIN-SemiCond-Black-Italic.ttf") format("truetype"); font-weight: 900; font-style: italic; font-display: swap; }
